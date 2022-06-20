@@ -1,0 +1,53 @@
+window.onscroll = function(ev) {
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+      // you're at the bottom of the page
+      console.log("Bottom of page");
+    }
+};
+
+const deg = 6;
+const hr = document.querySelector('#hr');
+const mn = document.querySelector('#mn');
+const sc = document.querySelector('#sc');
+
+setInterval(() =>{
+	let day = new Date();
+	let hh = day.getHours() * 30;
+	let mm = day.getMinutes() * deg;
+	let ss = day.getSeconds() * deg;
+
+	hr.style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+	mn.style.transform = `rotateZ(${mm}deg)`;
+	sc.style.transform = `rotateZ(${ss}deg)`;
+})
+
+function currentTime() {
+  let date = new Date(); 
+  let hh = date.getHours();
+  let mm = date.getMinutes();
+  let ss = date.getSeconds();
+  let session = "AM";
+
+  if(hh === 0){
+      hh = 12;
+  }
+  if(hh > 12){
+      hh = hh - 12;
+      session = "PM";
+   }
+
+   hh = (hh < 10) ? "0" + hh : hh;
+   mm = (mm < 10) ? "0" + mm : mm;
+   ss = (ss < 10) ? "0" + ss : ss;
+    
+   let time = hh + ":" + mm + ":" + ss + " " + session;
+
+  document.getElementById("digClock").innerText = time; 
+  let t = setTimeout(function(){ currentTime() }, 1000);
+}
+
+currentTime();
+
+function fade(test){
+document.getElementsByClassName(test).style.opacity='1';
+}

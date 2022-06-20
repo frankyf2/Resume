@@ -1,0 +1,95 @@
+<html class="contact" >
+<head> 
+<title> My Contact! </title> 
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://kit.fontawesome.com/0da60185e9.js" crossorigin="anonymous"></script>
+</head>
+
+<body >
+<!--Clock!-->
+<div class = "clock">
+  <div class = "hour">
+    <div class = "hr" id = "hr"> </div>
+  </div>
+  <div class = "min">
+    <div class = "mn" id = "mn"> </div>
+  </div>
+  <div class = "sec">
+    <div class = "sc" id = "sc"> </div>
+  </div>
+  <div id = "digClock" onload="currentTime()"></div>
+</div> 
+<script src="js/main.js"> </script>
+<!--Header!-->
+<div id="header" >
+		<div id = "logo">
+			<a href = "index.html"><i class="fa-solid fa-house-user"></i></a>
+		</div>
+		<ul id = "menu" data-aos="fade-down" data-aos-duration="1000">
+			<li><a href="about.html">About</a></li>
+			<li><a href="experience.html">Experience</a></li>
+			<li><a href="work.html">Work</a></li>
+			<li><a href="#">Contact me</a></li>
+		</ul>
+	</div>
+	
+<!--Contact Section!-->
+<div id="container">
+	<div id = "contact" >
+		<h1> Contact Me ! </h1>
+		<div class="top-divider"></div>
+			<div class="content">
+            	<div id="form" data-aos="fade-right" data-aos-duration="1000">
+					
+                	<form action="https://formspree.io/f/xlezzyqb" method="POST">
+					<table >
+					<tr>
+                    <td>Name
+						<img src = "img/icon/icon-user.png"><td>
+                        <input type="text" name="name" class="name" required="required"/><br><br></td></tr>
+                    <tr><td>Email
+						<img src = "img/icon/icon-mail.png"><td>
+                        <input type="email" name="email" class="email"/><br><br></td></tr>
+                    <tr><td>Message
+						<img src = "img/icon/icon-message.png"><td>
+                        <textarea class="message" name="message" required="required"></textarea><br><br></td></tr>
+					<tr><td>Type of service<td><select id="business" name="business">
+						<option value="Debugging">Debugging</option>
+						<option value="Editing">Video Editing</option>
+						<option value="Design">Website Design</option>
+						<option value="Application">Make an Application</option></select><br><br></td></tr>
+					<tr><td>Gender<td>
+						<input type="radio" name="gender" value="male" required="required">Male
+						<input type="radio" name="gender" value="female">Female<br><br></td></tr>
+					<tr><td>Keep update with news<td><input type="checkbox" name="update" value="yes">Yes<br></td></tr>
+                    <tr><td><input type="submit" name="submit" value="Send" class="submit">
+					
+					</table>
+                    </form>
+                </div>
+				<div id = "social-footer" >
+					<h2 data-aos="fade-right" data-aos-duration="1000">Follow Me:</h2>
+                    <p data-aos="fade-right" data-aos-duration="1000">Keep up to date with all news, events and behind the scenes by following me on social media </p>
+					<p data-aos="fade-right" data-aos-duration="1000">I regularly post about the newest updates, Website design, Photography, and upcoming events. You will learn what I'm up to, and what behind all those amazing design.</p>
+					<p data-aos="fade-right" data-aos-duration="1000">You can find me on <b>Facebook, Twitter, </b>and<b> Instagram.</b></p>
+					<div id="social-contact">
+					<ul>
+						<li><a href="https://www.facebook.com/dolahjee" class="facebook" target="_blank"><img src="img/icon/fb.png" ></a></li>
+						<li><a href="https://twitter.com/dolahhh_" class="twitter"target="_blank"><img src="img/icon/twitter.png"></a></li>
+						<li><a href="https://www.instagram.com/__dolah/" class="instagram"target="_blank"><img src="img/icon/instagram.png"></a></li>	
+					</ul>
+					</div>
+				</div>
+			</div>
+		<div class="bottom-divider"></div>
+		<p>Copyright &copy; 2021 All Rights Reserved by Abdullah bin Harun</p>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 3000,
+        once: true,
+      });
+    </script>
+</body>
+</html>

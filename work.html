@@ -1,0 +1,94 @@
+<html class="work">
+<head> 
+<title> My Work! </title>
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://kit.fontawesome.com/0da60185e9.js" crossorigin="anonymous"></script>
+ </head>
+
+<body>
+<!--Clock!-->
+<div class = "clock">
+  <div class = "hour">
+    <div class = "hr" id = "hr"> </div>
+  </div>
+  <div class = "min">
+    <div class = "mn" id = "mn"> </div>
+  </div>
+  <div class = "sec">
+    <div class = "sc" id = "sc"> </div>
+  </div>
+  <div id = "digClock" onload="currentTime()"></div>
+</div>
+<script src = "js/main.js"> </script>
+<!--Header!-->
+<div id="header" >
+		<div id = "logo">
+			<a href = "index.html"><i class="fa-solid fa-house-user"></i></a>
+		</div>
+		<ul id = "menu" data-aos="fade-down" data-aos-duration="1000">
+			<li><a href="about.html">About</a></li>
+			<li><a href="experience.html">Experience</a></li>
+			<li><a href="#">Work</a></li>
+			<li><a href="contact.html">Contact me</a></li>
+		</ul>
+	</div>
+	
+<!--Work Section!-->
+	<div id="container">
+		<div id="work">
+			<h1>Work</h1>
+			<div class="top-divider"></div>
+			
+			<div class="content" >
+				<h2>Photo</h2>
+				<p>Visual Basic</p>
+				<div data-aos="fade-down" data-aos-duration="1000" data-aos-once="false">
+				<a href = "img/work1.png"target="_blank"><img src = "img/work1.png"></a>
+				<a href = "img/work2.png"target="_blank"><img src = "img/work2.png"></a>
+				<a href = "img/work4.png"target="_blank"><img src = "img/work4.png"></a>
+				<a href = "img/work5.png"target="_blank"><img src = "img/work5.png"></a>
+				<a href = "img/work6.png"target="_blank"><img src = "img/work6.png"></a>
+				</div>
+				<p>HTML ( Mobile / Web Design)</p>
+				<div id="html"data-aos="fade-down" data-aos-duration="1000" data-aos-once="false">
+				<a href = "img/work3.png"target="_blank" ><img src = "img/work3.png"></a>
+				</div>
+				<p> Photography </p>
+				<div id="photography" data-aos="fade-down" data-aos-duration="1000" data-aos-once="false">
+				<a href = "img/photo1.jpg"target="_blank"><img src = "img/photo1.jpg"></a>
+				<a href = "img/photo2.jpg"target="_blank"><img src = "img/photo2.jpg"></a>
+				<a href = "img/photo3.jpg"target="_blank"><img src = "img/photo3.jpg"></a>
+				<a href = "img/photo4.jpg"target="_blank"><img src = "img/photo4.jpg"></a>
+				<a href = "img/photo5.jpg"target="_blank"><img src = "img/photo5.jpg"></a>
+				</div>
+				
+				<h2>Video</h2>
+				<p>Java</p>
+				
+				<video controls data-aos="fade-down" data-aos-duration="1000" data-aos-once="false">
+					<source src="vid/project1.mp4" >
+				</video>
+				<p>  Premiere Pro </p>
+				<video controls data-aos="fade-down" data-aos-duration="1000" data-aos-once="false">
+					<source src="vid/video1.mp4" >
+				</video>
+				<video controls data-aos="fade-down" data-aos-duration="1000" data-aos-once="false">
+					<source src="vid/video2.mp4" >
+				</video>
+			</div>
+			
+			<div class="bottom-divider"></div>
+			
+			<p>Copyright &copy; 2021 All Rights Reserved by Abdullah bin Harun</p>
+		</div>
+	</div>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 3000,
+        once: true,
+      });
+    </script>
+</body>
+</html>
