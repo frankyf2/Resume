@@ -458,7 +458,7 @@ margin-top : 10px;
 	background-color: #DD2A7B;	
 }
 
-.profile img{float:left; margin-right:40px; border:5px solid #222222;border-radius:50%;width:250px;height:auto;}
+.profile img{float:left; margin-right:40px; border:5px solid #222222;border-radius:50%;width:200;height:250;}
 
 #service-icon img{margin-left:50px;width:75px;height:auto}
 
