@@ -352,9 +352,9 @@ margin-top : 10px;
 
 
 #top-social ul{
-	position:absolute;
-	top:25%;
-	left:74%;
+	position:relative;
+	top:100;
+	left:850;
 	transform: translate(-50%, -50%);
 	padding: 0;
 	margin: 0;
