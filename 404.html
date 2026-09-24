@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+{% include theme-init.html %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>404 — Dol</title>
 <link rel="icon" type="image/png" href="img/favicon.png">
@@ -20,10 +21,83 @@
       <a href="index.html" class="btn btn-primary">Back to home</a>
       <a href="work.html" class="btn btn-ghost">See the work instead</a>
     </div>
+
+    <div class="snake-wrap">
+      <p style="font-family:var(--mono); font-size:12.5px; color:var(--ink-dim); margin-bottom:12px;">…or since you're already lost, play a round.</p>
+      <canvas id="snake" width="320" height="320"></canvas>
+      <p id="snake-score" style="font-family:var(--mono); font-size:12.5px; color:var(--ink-dim); margin-top:10px;">Score: 0 — arrow keys / WASD to move</p>
+    </div>
   </div>
 </section>
 
 {% include footer.html %}
 <script src="js/main.js"></script>
+<script>
+(function () {
+  var canvas = document.getElementById('snake');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var size = 16, cols = canvas.width / size, rows = canvas.height / size;
+  var snake, dir, food, score, alive, started;
+
+  function reset() {
+    snake = [{x:8,y:8},{x:7,y:8},{x:6,y:8}];
+    dir = {x:1,y:0};
+    score = 0;
+    alive = true;
+    started = false;
+    placeFood();
+    document.getElementById('snake-score').textContent = 'Score: 0 — arrow keys / WASD to move';
+  }
+  function placeFood() {
+    food = { x: Math.floor(Math.random()*cols), y: Math.floor(Math.random()*rows) };
+  }
+  function tick() {
+    if (!alive || !started) return draw();
+    var head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+    if (head.x < 0 || head.y < 0 || head.x >= cols || head.y >= rows || snake.some(function(s){return s.x===head.x && s.y===head.y;})) {
+      alive = false;
+      document.getElementById('snake-score').textContent = 'Game over — score: ' + score + ' (press any arrow key to retry)';
+      return draw();
+    }
+    snake.unshift(head);
+    if (head.x === food.x && head.y === food.y) {
+      score++;
+      document.getElementById('snake-score').textContent = 'Score: ' + score;
+      placeFood();
+    } else {
+      snake.pop();
+    }
+    draw();
+  }
+  function draw() {
+    ctx.fillStyle = '#1E1B27';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#FF6B5B';
+    ctx.fillRect(food.x*size+2, food.y*size+2, size-4, size-4);
+    ctx.fillStyle = '#4ECDC4';
+    snake.forEach(function (s, i) {
+      ctx.globalAlpha = i === 0 ? 1 : 0.75;
+      ctx.fillRect(s.x*size+1, s.y*size+1, size-2, size-2);
+    });
+    ctx.globalAlpha = 1;
+  }
+  reset();
+  draw();
+  document.addEventListener('keydown', function (e) {
+    var map = {
+      ArrowUp:{x:0,y:-1}, w:{x:0,y:-1}, ArrowDown:{x:0,y:1}, s:{x:0,y:1},
+      ArrowLeft:{x:-1,y:0}, a:{x:-1,y:0}, ArrowRight:{x:1,y:0}, d:{x:1,y:0}
+    };
+    var k = map[e.key];
+    if (!k) return;
+    if (!alive) { reset(); draw(); return; }
+    if (k.x === -dir.x && k.y === -dir.y) return;
+    dir = k;
+    started = true;
+  });
+  setInterval(tick, 140);
+})();
+</script>
 </body>
 </html>

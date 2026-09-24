@@ -1,13 +1,16 @@
 <header>
   <div class="wrap">
     <a class="brand" href="{{ include.prefix }}index.html">Dol<span>.</span></a>
-    <button class="nav-toggle" aria-label="Menu">☰</button>
-    <nav><ul>
-      <li><a href="{{ include.prefix }}index.html"{% if include.active == "home" %} class="active"{% endif %}>Home</a></li>
-      <li><a href="{{ include.prefix }}work.html"{% if include.active == "work" %} class="active"{% endif %}>Work</a></li>
-      <li><a href="{{ include.prefix }}about.html"{% if include.active == "about" %} class="active"{% endif %}>About</a></li>
-      <li><a href="{{ include.prefix }}resume.pdf" download>Resume</a></li>
-      <li><a href="{{ include.prefix }}contact.html"{% if include.active == "contact" %} class="active"{% endif %}>Contact</a></li>
-    </ul></nav>
+    <div class="nav-right">
+      <nav><ul>
+        <li><a href="{{ include.prefix }}index.html"{% if include.active == "home" %} class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ include.prefix }}work.html"{% if include.active == "work" %} class="active"{% endif %}>Work</a></li>
+        <li><a href="{{ include.prefix }}about.html"{% if include.active == "about" %} class="active"{% endif %}>About</a></li>
+        <li><a href="{{ include.prefix }}contact.html"{% if include.active == "contact" %} class="active"{% endif %}>Contact</a></li>
+      </ul></nav>
+      <button class="icon-btn" id="palette-btn" aria-label="Search (press /)" title="Search (press /)">⌕</button>
+      <button class="icon-btn" id="theme-btn" aria-label="Toggle theme" title="Toggle light/dark">◐</button>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
+    </div>
   </div>
 </header>

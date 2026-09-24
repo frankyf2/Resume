@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+{% include theme-init.html %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact — Dol</title>
 <meta name="description" content="Get in touch with Dol — full-stack developer working in Blazor, .NET, Python, and PHP.">
@@ -44,6 +45,41 @@
         <p class="lead" style="font-size:15px; margin-top:20px;">I usually reply within a day or two.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">Guestbook</span>
+      <h2>Leave a note.</h2>
+    </div>
+    <!--
+      Guestbook powered by giscus (github.com/giscus/giscus) — free, backed by GitHub Discussions.
+      To activate:
+        1. Enable "Discussions" on github.com/frankyf2/Resume (repo Settings → Features).
+        2. Install the giscus app on that repo: https://github.com/apps/giscus
+        3. Go to https://giscus.app, fill in frankyf2/Resume, pick a Discussion category
+           (e.g. "General" or a new "Guestbook" category), and it will generate your
+           real data-repo-id and data-category-id — paste them in below.
+      Until then this box will just show giscus's own "not configured" message.
+    -->
+    <script src="https://giscus.app/client.js"
+      data-repo="frankyf2/Resume"
+      data-repo-id="REPLACE_WITH_REPO_ID"
+      data-category="General"
+      data-category-id="REPLACE_WITH_CATEGORY_ID"
+      data-mapping="specific"
+      data-term="guestbook"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="dark_dimmed"
+      data-lang="en"
+      crossorigin="anonymous"
+      async>
+    </script>
   </div>
 </section>
 
