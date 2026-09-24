@@ -1,0 +1,29 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Dol</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+{% include nav.html %}
+<section class="hero" style="text-align:center;">
+  <div class="wrap">
+    <p class="kicker" style="justify-content:center;">404</p>
+    <h1 style="max-width:none;">This route threw an unhandled exception.</h1>
+    <p class="lead" style="margin-left:auto; margin-right:auto;">Whatever you were looking for isn't here — maybe it got refactored, maybe it never shipped.</p>
+    <div class="cta-row" style="justify-content:center;">
+      <a href="index.html" class="btn btn-primary">Back to home</a>
+      <a href="work.html" class="btn btn-ghost">See the work instead</a>
+    </div>
+  </div>
+</section>
+
+{% include footer.html %}
+<script src="js/main.js"></script>
+</body>
+</html>

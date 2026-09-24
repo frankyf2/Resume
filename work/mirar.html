@@ -1,0 +1,53 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIRAR Platform — Dol</title>
+<meta name="description" content="Enterprise training and compliance platform built end-to-end in Blazor Server for MIRAR.">
+<meta property="og:title" content="MIRAR Platform — Dol">
+<meta property="og:description" content="Enterprise training and compliance platform built end-to-end in Blazor Server for MIRAR.">
+<meta property="og:image" content="../img/profile.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+{% include nav.html active="work" prefix="../" %}
+<section class="hero" style="padding-bottom:0;">
+  <div class="wrap">
+    <p class="kicker">Client platform · in active development</p>
+    <h1 style="font-size:clamp(32px,5.5vw,52px); max-width:none;">MIRAR Platform</h1>
+  </div>
+</section>
+
+<section>
+  <div class="wrap case" style="border-bottom:none; padding-top:20px;">
+    <div>
+      <p>An enterprise training and compliance platform built end-to-end in Blazor Server for MIRAR (Malaysian Institute for Risk and Resilience). I own most of the system: certificate issuance and browser-generated PDF verification, an MCQ quiz engine with QR-coded live sessions and analytics, a survey engine spanning multiple client assessments (built out into a full Bank &rarr; Instrument &rarr; Session architecture), and the admin and member portals underneath it all.</p>
+    </div>
+    <div>
+      <ul>
+        <li>Certificate system with public verification &amp; bulk send</li>
+        <li>Quiz engine — QR sessions, live analytics, linked certificates</li>
+        <li>Survey/diagnostic engine for multiple client engagements</li>
+        <li>Admin portal, member portal, audit logging</li>
+      </ul>
+      <div class="stackline">Blazor Server · MariaDB/MySQL · EF Core · Cloudflare Workers</div>
+    </div>
+  </div>
+
+  <div class="wrap" style="display:flex; justify-content:space-between; border-top:1px solid var(--line); padding-top:30px; margin-top:10px;">
+    <a href="autumn-twilight.html" class="btn btn-ghost">&larr; Autumn Twilight</a>
+    <a href="../work.html" class="btn btn-ghost">All work</a>
+    <a href="iseliaintel.html" class="btn btn-ghost">iSeliaIntel &rarr;</a>
+  </div>
+</section>
+
+{% include footer.html %}
+<script src="../js/main.js"></script>
+</body>
+</html>

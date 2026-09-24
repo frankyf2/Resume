@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,24 +11,12 @@
 <meta property="og:description" content="Let's talk about what you're building.">
 <meta property="og:image" content="img/profile.png">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a class="brand" href="index.html">Dol<span>.</span></a>
-    <button class="nav-toggle" aria-label="Menu">☰</button>
-    <nav><ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="resume.pdf" download>Resume</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-    </ul></nav>
-  </div>
-</header>
-
+{% include nav.html active="contact" %}
 <section class="hero contact-hero">
   <div class="wrap">
     <p class="kicker">Contact</p>
@@ -46,6 +36,7 @@
 
       <div>
         <div class="contact-links">
+          <a href="mailto:abdullahharun96@gmail.com">abdullahharun96@gmail.com</a>
           <a href="https://www.facebook.com/dolahjee" target="_blank" rel="noopener">Facebook</a>
           <a href="https://twitter.com/dolahhh_" target="_blank" rel="noopener">Twitter</a>
           <a href="https://www.instagram.com/__dolah/" target="_blank" rel="noopener">Instagram</a>
@@ -56,12 +47,7 @@
   </div>
 </section>
 
-<footer>
-  <div class="wrap foot-bottom">
-    <span>Dol — Full-Stack Developer</span>
-    <span>Built 2026</span>
-  </div>
-</footer>
+{% include footer.html %}
 <script src="js/main.js"></script>
 </body>
 </html>

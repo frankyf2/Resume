@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,115 +11,68 @@
 <meta property="og:description" content="Five projects, five different problems — MIRAR, iSeliaIntel, iSusun, star8892, and Autumn Twilight.">
 <meta property="og:image" content="img/profile.png">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a class="brand" href="index.html">Dol<span>.</span></a>
-    <button class="nav-toggle" aria-label="Menu">☰</button>
-    <nav><ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="work.html" class="active">Work</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="resume.pdf" download>Resume</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul></nav>
-  </div>
-</header>
-
+{% include nav.html active="work" %}
 <section class="hero" style="padding-bottom:20px;">
   <div class="wrap">
     <p class="kicker">Work</p>
     <h1 style="font-size:clamp(32px,5vw,50px);">Five projects, five different problems.</h1>
+    <p class="lead">Each one gets its own page now — click through for the full story.</p>
   </div>
 </section>
 
 <section style="padding-top:20px;">
   <div class="wrap">
-
-    <div class="case">
-      <div>
-        <span class="tag-live">Client platform · in active development</span>
-        <h3>MIRAR Platform</h3>
-        <p>An enterprise training and compliance platform built end-to-end in Blazor Server for MIRAR (Malaysian Institute for Risk and Resilience). I own most of the system: certificate issuance and browser-generated PDF verification, an MCQ quiz engine with QR-coded live sessions and analytics, a survey engine spanning multiple client assessments (built out into a full Bank → Instrument → Session architecture), and the admin and member portals underneath it all.</p>
-      </div>
-      <ul>
-        <li>Certificate system with public verification &amp; bulk send</li>
-        <li>Quiz engine — QR sessions, live analytics, linked certificates</li>
-        <li>Survey/diagnostic engine for multiple client engagements</li>
-        <li>Admin portal, member portal, audit logging</li>
-      </ul>
-      <div class="stackline" style="grid-column:1/-1;">Blazor Server · MariaDB/MySQL · EF Core · Cloudflare Workers</div>
+    <div class="bento">
+      <a class="card wide" href="work/mirar.html" style="text-decoration:none;">
+        <div>
+          <p class="tag-live">Client platform · in active development</p>
+          <h3>MIRAR Platform</h3>
+          <p>Certificates, quiz engine, survey engine, admin &amp; member portals — the whole training and compliance system.</p>
+        </div>
+        <div class="meta">Blazor Server · MySQL · Cloudflare Workers →</div>
+      </a>
+      <a class="card" href="work/iseliaintel.html" style="text-decoration:none;">
+        <div>
+          <p class="tag-live">Client platform</p>
+          <h3>iSeliaIntel</h3>
+          <p>Regulatory risk intelligence across Malaysian financial regulators.</p>
+        </div>
+        <div class="meta">Blazor · Background workers →</div>
+      </a>
+      <a class="card" href="work/isusun.html" style="text-decoration:none;">
+        <div>
+          <p class="tag-live">Open source · self-hosted</p>
+          <h3>iSusun</h3>
+          <p>A free, self-hosted Kanban board with the features paywalled tools hold back.</p>
+        </div>
+        <div class="meta">Blazor · Docker →</div>
+      </a>
+      <a class="card" href="work/star8892.html" style="text-decoration:none;">
+        <div>
+          <p class="tag-live">Personal project</p>
+          <h3>star8892</h3>
+          <p>An alumni social network with its own marketplace and events calendar.</p>
+        </div>
+        <div class="meta">Blazor · MySQL →</div>
+      </a>
+      <a class="card" href="work/autumn-twilight.html" style="text-decoration:none;">
+        <div>
+          <p class="tag-live">Ongoing · passion project</p>
+          <h3>Autumn Twilight</h3>
+          <p>A companion portal for a text-based Dragonlance roleplaying world.</p>
+        </div>
+        <div class="meta">Blazor Server →</div>
+      </a>
     </div>
-
-    <div class="case">
-      <div>
-        <span class="tag-live">Client platform</span>
-        <h3>iSeliaIntel</h3>
-        <p>A risk intelligence platform tracking regulatory activity across Malaysian financial regulators — BNM, SC, Bursa Malaysia, SSM, LHDN and more. Automated risk-score snapshots run twice daily, trend dashboards visualize movement over time, and a regulatory scraper is fully admin-configurable, so a new source can be added through the UI without a code deploy.</p>
-      </div>
-      <ul>
-        <li>Twice-daily automated risk-score snapshots</li>
-        <li>Admin-configurable scraper, no-code new sources</li>
-        <li>Blazor intelligence dashboard with time-of-day panels</li>
-      </ul>
-      <div class="stackline" style="grid-column:1/-1;">Blazor Server · MySQL · Background workers</div>
-    </div>
-
-    <div class="case">
-      <div>
-        <span class="tag-live">Open source · self-hosted</span>
-        <h3>iSusun</h3>
-        <p>A free, open-source, self-hosted Kanban board — built after running into the same wall on both Trello and Jira: useful extras locked behind a paywall, or open alternatives that never quite fit. Started from an open-source base and grown into a genuinely full-featured tool: time tracking, card linking, deadlines, an admin panel, Trello import, and a one-command Docker deploy.</p>
-      </div>
-      <ul>
-        <li>Boards, templates, subtasks, time tracking</li>
-        <li>Card linking, activity log, comments</li>
-        <li>Role-based access, admin panel, Trello import</li>
-        <li>Fully offline mode, Docker-based deployment</li>
-      </ul>
-      <div class="stackline" style="grid-column:1/-1;">Blazor Server · Docker</div>
-    </div>
-
-    <div class="case">
-      <div>
-        <span class="tag-live">Personal project</span>
-        <h3>star8892</h3>
-        <p>A Facebook-style social network built for an alumni community, with its own themed design system (Alumni88). Beyond the feed, it includes a marketplace with listings and orders, an events calendar with creation and RSVPs, and a member directory.</p>
-      </div>
-      <ul>
-        <li>Feed, profiles, and notifications</li>
-        <li>Marketplace — listings and order management</li>
-        <li>Events — calendar, creation, RSVPs</li>
-      </ul>
-      <div class="stackline" style="grid-column:1/-1;">Blazor Server · MySQL</div>
-    </div>
-
-    <div class="case">
-      <div>
-        <span class="tag-live">Ongoing · passion project</span>
-        <h3>Autumn Twilight</h3>
-        <p>A companion web portal for a persistent text-based roleplaying world set in the Dragonlance universe. Built from the ground up: account system, character dashboard, inventory, quests, leaderboards, and lore pages — currently in active design and build.</p>
-      </div>
-      <ul>
-        <li>Account &amp; character system</li>
-        <li>Quests, inventory, leaderboards</li>
-        <li>Lore, devlog, and maps pages</li>
-      </ul>
-      <div class="stackline" style="grid-column:1/-1;">Blazor Server</div>
-    </div>
-
   </div>
 </section>
 
-<footer>
-  <div class="wrap foot-bottom">
-    <span>Dol — Full-Stack Developer</span>
-    <span>Built 2026</span>
-  </div>
-</footer>
+{% include footer.html %}
 <script src="js/main.js"></script>
 </body>
 </html>

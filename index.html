@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,36 +11,24 @@
 <meta property="og:description" content="Blazor & .NET developer. Building MIRAR's platform, plus iSelia, iSusun, star8892, and Autumn Twilight.">
 <meta property="og:image" content="img/profile.png">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a class="brand" href="index.html">Dol<span>.</span></a>
-    <button class="nav-toggle" aria-label="Menu">☰</button>
-    <nav><ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="resume.pdf" download>Resume</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul></nav>
-  </div>
-</header>
-
+{% include nav.html active="home" %}
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="kicker">Full-stack developer · Blazor &amp; .NET</p>
-      <h1>I build the systems <span class="accent">platforms</span> end up running on.</h1>
-      <p class="lead">Most of my work lives inside MIRAR's training and compliance platform — certificates, quizzes, surveys, and the admin tooling that holds it together. Outside of that, I build the tools I wished already existed.</p>
-      <div class="cta-row">
+      <p class="kicker hero-in d1">Full-stack developer · Blazor &amp; .NET</p>
+      <h1 class="hero-in d2">I build the systems <span class="accent">platforms</span> end up running on.</h1>
+      <p class="lead hero-in d3">Most of my work lives inside MIRAR's training and compliance platform — certificates, quizzes, surveys, and the admin tooling that holds it together. Outside of that, I build the tools I wished already existed.</p>
+      <div class="cta-row hero-in d4">
         <a href="work.html" class="btn btn-primary">See the work</a>
         <a href="contact.html" class="btn btn-ghost">Get in touch</a>
       </div>
     </div>
-    <div class="photo-frame">
+    <div class="photo-frame hero-in d5">
       <div class="blob"></div>
       <img src="img/profile.png" alt="Portrait of Dol">
     </div>
@@ -58,41 +48,36 @@
       <h2>Five things I've built and kept building.</h2>
     </div>
     <div class="bento">
-      <div class="card wide">
+      <a class="card wide" href="work/mirar.html" style="text-decoration:none;">
         <div>
           <p class="tag-live">Client platform · in active development</p>
           <h3>MIRAR Platform</h3>
           <p>An enterprise training and compliance platform built end-to-end in Blazor Server: certificate issuance, an MCQ quiz engine with live QR sessions, a survey engine, and the admin/member portals underneath it.</p>
         </div>
-        <div class="meta">Blazor Server · MySQL · Cloudflare Workers</div>
-      </div>
-      <div class="card">
+        <div class="meta">Blazor Server · MySQL · Cloudflare Workers →</div>
+      </a>
+      <a class="card" href="work/iseliaintel.html" style="text-decoration:none;">
         <div>
           <p class="tag-live">Client platform</p>
           <h3>iSeliaIntel</h3>
           <p>A risk intelligence platform tracking regulatory activity across Malaysian financial regulators, with automated snapshots and an admin-configurable scraper.</p>
         </div>
-        <div class="meta">Blazor · Background workers</div>
-      </div>
-      <div class="card">
+        <div class="meta">Blazor · Background workers →</div>
+      </a>
+      <a class="card" href="work/isusun.html" style="text-decoration:none;">
         <div>
           <p class="tag-live">Open source · self-hosted</p>
           <h3>iSusun</h3>
           <p>A free, self-hosted Kanban board built to close the gap between paywalled tools and open-source ones that never quite fit.</p>
         </div>
-        <div class="meta">Blazor · Docker</div>
-      </div>
+        <div class="meta">Blazor · Docker →</div>
+      </a>
     </div>
     <p style="margin-top:32px;"><a href="work.html" class="btn btn-ghost">View all work</a></p>
   </div>
 </section>
 
-<footer>
-  <div class="wrap foot-bottom">
-    <span>Dol — Full-Stack Developer</span>
-    <span>Built 2026</span>
-  </div>
-</footer>
+{% include footer.html %}
 <script src="js/main.js"></script>
 </body>
 </html>
