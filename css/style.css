@@ -108,6 +108,9 @@ nav a:hover, nav a.active{color:var(--teal);}
 .now li::before{content:"✦"; position:absolute; left:0; color:var(--coral); font-size:12px;}
 @media (max-width:900px){ .about-grid{grid-template-columns:1fr;} .about-photo{width:120px;} }
 
+/* RESUME CTA */
+.resume-cta{display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:28px 32px;}
+
 /* TIMELINE (draft) */
 .timeline{position:relative; padding-left:28px; border-left:2px solid var(--line); display:flex; flex-direction:column; gap:26px;}
 .tl-item{position:relative;}
@@ -133,3 +136,7 @@ nav a:hover, nav a.active{color:var(--teal);}
 /* FOOTER */
 footer{border-top:1px solid var(--line); padding:40px 0;}
 .foot-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:13px; color:#7D7690; font-family:var(--mono);}
+
+/* EASTER EGG TOAST */
+.egg-toast{position:fixed; left:50%; bottom:30px; transform:translate(-50%,20px); opacity:0; background:var(--surface); border:1px solid var(--teal); color:var(--ink); font-family:var(--mono); font-size:13.5px; padding:14px 22px; border-radius:10px; z-index:100; transition:opacity .3s, transform .3s; box-shadow:0 10px 30px rgba(0,0,0,.4); max-width:90vw; text-align:center;}
+.egg-toast.show{opacity:1; transform:translate(-50%,0);}
