@@ -1,16 +1,24 @@
 # Dol — Portfolio
 
-Personal portfolio website. Built with plain HTML/CSS/JS (no build step), deployable directly via GitHub Pages.
+Personal portfolio. Plain HTML/CSS/JS, **no build step and no templating** — every page is complete static HTML, so it
+deploys unchanged to Vercel, GitHub Pages, Netlify or any static host.
 
 ## Structure
-- `index.html` — home / hero / featured work
-- `work.html` — project index, links to `/work/*.html` case studies
-- `work/*.html` — individual project case study pages
-- `about.html` — about + timeline (draft) + certificates
-- `contact.html` — contact form + links
-- `404.html` — not found page
-- `css/style.css` — shared styles
-- `js/main.js` — mobile nav toggle
-- `_includes/nav.html`, `_includes/footer.html` — shared header/footer, pulled into every page via Jekyll `{% include %}`
+- `index.html` — home, hero, featured work
+- `work.html` — project index; `work/*.html` — one case study per project
+- `about.html` — bio, timeline, certificates, résumé download
+- `contact.html` — form (Formspree) + links + guestbook (giscus)
+- `404.html` — not-found page (with a snake game)
+- `css/style.css` — all styles; theme tokens live in `:root` / `:root[data-theme="light"]`
+- `js/main.js` — nav, theme, command palette (`/` or Ctrl/Cmd+K), form states, easter eggs
 
-**Note:** the shared nav/footer only render through Jekyll's include system — GitHub Pages builds this automatically, but opening an `.html` file directly in a browser (double-click) will show the raw `{% include %}` tags instead of the header/footer. To preview locally, run `bundle exec jekyll serve` from this folder (requires Ruby + the `github-pages` gem), or just push to GitHub Pages and view it there.
+## Preview locally
+Any static server works, for example `npx serve .` or `python -m http.server`. Opening the files directly also works.
+
+## Editing the shared nav/footer
+They are inlined in every page. To change them, search-and-replace across `*.html` and `work/*.html`
+(each page's nav marks its current link with `aria-current="page"`).
+
+## Before sharing links
+`og:image` points at `img/profile.jpg` with a relative path. Social platforms need an absolute URL
+(`https://your-domain/img/profile.jpg`), so set it once your production domain is fixed.
