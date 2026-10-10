@@ -17,7 +17,7 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -69,33 +69,24 @@
     <div class="section-head">
       <h2>Five things I've built and kept building.</h2>
     </div>
-    <div class="bento bento-2">
-      <a class="card wide" href="work/mirar.html">
-        <div>
-          <p class="tag">Client platform · in active development</p>
-          <h3>MIRAR Platform</h3>
-          <p>An enterprise training and compliance platform built end-to-end in Blazor Server: certificate issuance, an MCQ quiz engine with live QR sessions, a survey engine, and the admin/member portals underneath it.</p>
-        </div>
-        <div class="meta">Blazor Server · MySQL · Cloudflare Workers →</div>
-      </a>
-      <a class="card" href="work/iseliaintel.html">
-        <div>
-          <p class="tag">Client platform</p>
-          <h3>iSeliaIntel</h3>
-          <p>A risk intelligence platform tracking regulatory activity across Malaysian financial regulators, with automated snapshots and an admin-configurable scraper.</p>
-        </div>
-        <div class="meta">Blazor · Background workers →</div>
-      </a>
-      <a class="card" href="work/isusun.html">
-        <div>
-          <p class="tag">Open source · self-hosted</p>
-          <h3>iSusun</h3>
-          <p>A free, self-hosted Kanban board built to close the gap between paywalled tools and open-source ones that never quite fit.</p>
-        </div>
-        <div class="meta">Blazor · Docker →</div>
-      </a>
-    </div>
-    <p style="margin-top:32px;"><a href="work.html" class="btn btn-ghost">View all work</a></p>
+    <ul class="projects">
+      <li><a class="project" href="work/mirar.html">
+        <div class="project-main"><h3 class="project-name">MIRAR Platform</h3><p class="project-sum">An enterprise training and compliance platform built end-to-end in Blazor Server: certificate issuance, an MCQ quiz engine with live QR sessions, a survey engine, and the admin/member portals underneath it.</p></div>
+        <div class="project-side"><span class="project-tag">Client platform · in active development</span><span>Blazor Server · MySQL · Cloudflare Workers</span></div>
+        <svg class="project-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a></li>
+      <li><a class="project" href="work/iseliaintel.html">
+        <div class="project-main"><h3 class="project-name">iSeliaIntel</h3><p class="project-sum">A risk intelligence platform tracking regulatory activity across Malaysian financial regulators, with automated snapshots and an admin-configurable scraper.</p></div>
+        <div class="project-side"><span class="project-tag">Client platform</span><span>Blazor · Background workers</span></div>
+        <svg class="project-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a></li>
+      <li><a class="project" href="work/isusun.html">
+        <div class="project-main"><h3 class="project-name">iSusun</h3><p class="project-sum">A free, self-hosted Kanban board built to close the gap between paywalled tools and open-source ones that never quite fit.</p></div>
+        <div class="project-side"><span class="project-tag">Open source · self-hosted</span><span>Blazor · Docker</span></div>
+        <svg class="project-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a></li>
+    </ul>
+    <p class="more"><a href="work.html" class="btn btn-ghost">See all five projects</a></p>
   </div>
 </section>
 </main>
