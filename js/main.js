@@ -132,6 +132,7 @@
       { name: 'About', tag: 'page bio skills timeline certificates', href: P + 'about.html' },
       { name: 'Contact', tag: 'page email form guestbook', href: P + 'contact.html' },
       { name: 'MIRAR Platform', tag: 'project blazor certificate quiz survey', href: P + W + 'mirar.html' },
+      { name: 'Puncak Nilam (PNMS)', tag: 'project blazor consultancy pnms puncak nilam enquiries insights', href: P + W + 'pnms.html' },
       { name: 'iSeliaIntel', tag: 'project risk intelligence regulatory', href: P + W + 'iseliaintel.html' },
       { name: 'iSusun', tag: 'project kanban open source docker', href: P + W + 'isusun.html' },
       { name: 'star8892', tag: 'project alumni social network', href: P + W + 'star8892.html' },

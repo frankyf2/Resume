@@ -7,9 +7,9 @@
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#14121A">
 <title>MIRAR Platform — Dol</title>
-<meta name="description" content="Enterprise training and compliance platform built end-to-end in Blazor Server for MIRAR.">
+<meta name="description" content="Designed, built and maintain the MIRAR website: redesigned the public site and built the entire admin system for courses, certificates, quizzes, surveys, articles, members and analytics.">
 <meta property="og:title" content="MIRAR Platform — Dol">
-<meta property="og:description" content="Enterprise training and compliance platform built end-to-end in Blazor Server for MIRAR.">
+<meta property="og:description" content="Designed, built and maintain the MIRAR website: redesigned the public site and built the entire admin system for courses, certificates, quizzes, surveys, articles, members and analytics.">
 <meta property="og:image" content="../img/profile.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -42,30 +42,332 @@
 <section class="page-head">
   <div class="wrap">
     <h1 class="page-title">MIRAR Platform</h1>
-    <dl class="facts">
-      <div class="fact"><dt>Context</dt><dd>Client platform · in active development</dd></div>
+    <dl class="facts facts-4">
+      <div class="fact"><dt>Company</dt><dd>MIRAR, a separate company from PNMS under the same management</dd></div>
+      <div class="fact"><dt>My role</dt><dd>Design, build and maintenance: the redesigned public website and the entire admin system</dd></div>
+      <div class="fact"><dt>Status</dt><dd>In active development</dd></div>
       <div class="fact"><dt>Stack</dt><dd>Blazor Server · MariaDB/MySQL · EF Core · Cloudflare Workers</dd></div>
     </dl>
+    <p class="case-lead mp-lead">MIRAR (the Malaysian Institute for Risk and Resilience) runs training, advisory and credentialing. I redesigned its public website from the previous version, then built the whole admin system behind it: the tools staff use to run courses and sessions, issue certificates, deliver quizzes and surveys, publish articles and see how the site is used. I design, build and maintain all of it.</p>
+    <div class="figures">
+      <div class="figure"><span class="figure-num">30</span><span class="figure-label">admin routes</span></div>
+      <div class="figure"><span class="figure-num">36</span><span class="figure-label">data models</span></div>
+      <div class="figure"><span class="figure-num">7</span><span class="figure-label">email templates</span></div>
+    </div>
+    <nav class="jump" aria-label="On this page">
+      <a href="#public">The public website</a>
+      <a href="#admin">The admin system</a>
+      <a href="#participants">What participants and members see</a>
+      <a href="#engineering">Under the hood</a>
+    </nav>
   </div>
 </section>
 
-<section class="pad-top-20">
-  <div class="wrap case">
-    <p class="case-lead">An enterprise training and compliance platform built end-to-end in Blazor Server for MIRAR (Malaysian Institute for Risk and Resilience). I own most of the system: certificate issuance and browser-generated PDF verification, an MCQ quiz engine with QR-coded live sessions and analytics, a survey engine spanning multiple client assessments (built out into a full Bank → Instrument → Session architecture), and the admin and member portals underneath it all.</p>
-    <ul class="features">
-        <li>Certificate system with public verification &amp; bulk send</li>
-        <li>Quiz engine — QR sessions, live analytics, linked certificates</li>
-        <li>Survey/diagnostic engine for multiple client engagements</li>
-        <li>Admin portal, member portal, audit logging</li>
-    </ul>
+<section class="mp-section" id="public">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The public website</h2>
+      <p class="mp-intro">I redesigned the public site from the previous version. Visitors see the pages below; the courses, sessions, articles and homepage ticker they read are all edited from the admin system.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Layout and navigation</h3><p class="module-sum">One redesigned layout shared by every public page.</p></div>
+          <ul class="ticks">
+            <li>Mega-menu navigation for About Us, Advisory &amp; Consulting, Public Courses and Professional Credentialing, with a separate mobile menu</li>
+            <li>Homepage ticker whose items are managed from the admin</li>
+            <li>Home, About, Our Team, Our Services, Policies, Career, Be a Partner, Be a Member and Contact pages</li>
+            <li>Responsive layouts for phones and tablets</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Courses and calendar</h3><p class="module-sum">Where visitors find a course and register interest.</p></div>
+          <ul class="ticks">
+            <li>Course catalogue by category; each category's hero text, navigation label and meta description come from the admin</li>
+            <li>Course pages with learning outcomes, a learning pathway, upcoming sessions and a register-interest form</li>
+            <li>HRD Corp claimable badge on courses and sessions</li>
+            <li>Training calendar with a format filter and price per person; each session can hide its dates or its seat count</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Articles</h3><p class="module-sum">Publishing, reading and contributing.</p></div>
+          <ul class="ticks">
+            <li>Article list with category and tag views, and article pages with comments</li>
+            <li>Public article submission with cover image upload, held for review before it goes live</li>
+            <li>RSS feed of the latest 30 articles</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Forms and enquiries</h3><p class="module-sum">Everything a visitor can send.</p></div>
+          <ul class="ticks">
+            <li>Contact and course-interest forms save to the database and email the team</li>
+            <li>Every submission appears in the admin Leads page</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>ISelia and Daily Brief</h3><p class="module-sum">Product and intelligence pages.</p></div>
+          <ul class="ticks">
+            <li>ISelia Risk System overview and features pages</li>
+            <li>Daily Brief: live news columns and a risk snapshot from the shared feeds API, cached for five minutes, and it falls back to empty columns instead of an error if the API is down</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Search and sharing</h3><p class="module-sum">How the site shows up outside itself.</p></div>
+          <ul class="ticks">
+            <li>Open Graph images for 11 pages, plus canonical and Open Graph tags on course pages</li>
+            <li>Generated sitemap.xml covering pages, categories, courses and articles, plus robots.txt</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="admin">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The admin system</h2>
+      <p class="mp-intro">I built all of it: 30 routes, each behind its own sign-in guard. The sidebar shows live counts of what needs attention, and most list pages export to Excel, CSV or PDF.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Dashboard</h3><p class="module-sum">One screen for what needs doing today.</p></div>
+          <ul class="ticks">
+            <li>Eight stat cards: pending registrations, enquiries, visits, upcoming sessions, courses, members, certificates issued, and live quiz and survey sessions</li>
+            <li>A Needs Attention list: registrations to process, articles pending review, comments to moderate, hidden sessions starting within 14 days, sessions 80% full, and members who haven't activated</li>
+            <li>Website traffic chart with top pages, upcoming events with seat fill, and recent registrations</li>
+            <li>A searchable recent-activity feed and an admin-actions feed</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Courses, categories and calendar</h3><p class="module-sum">The catalogue behind the public site.</p></div>
+          <ul class="ticks">
+            <li>Course editor with details, learning outcomes, learning pathway steps and publish settings</li>
+            <li>Category manager: slug, navigation label, hero copy, meta description, order and visibility</li>
+            <li>Training calendar: location, format, seats total and taken, price, HRD claimable, show or hide dates and seats</li>
+            <li>Course resources: external video links with ordering, alongside the uploaded materials linked to each course</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Certificates</h3><p class="module-sum">Issue, email and verify.</p></div>
+          <ul class="ticks">
+            <li>Issue one or a whole batch: pick the course and session, paste the names, review names, codes and emails, then issue</li>
+            <li>Issue as MIRAR or PNMS with the right logo, seal and signature; choose the frame and certificate type</li>
+            <li>Structured certificate codes built from company and course acronyms</li>
+            <li>Certificates grouped by session; edit a whole batch, revoke or restore any one</li>
+            <li>Email one recipient or a whole group, resend, or send automatically on issue; recipients without an account become members and get an activation link</li>
+            <li>Preview and print. The PDF is rendered in the browser from the same markup as the preview, so what is emailed matches what is on screen</li>
+            <li>Download a batch as one ZIP with a PDF per person; a server-side renderer is kept as a fallback</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Quizzes</h3><p class="module-sum">Build once, run many sessions.</p></div>
+          <ul class="ticks">
+            <li>Five question types: single choice, multiple choice, dropdown, short answer and paragraph</li>
+            <li>Points, required flags, images, an &ldquo;Other&rdquo; option, drag-to-reorder and duplicate</li>
+            <li>Timer, question shuffling, pass mark and show-results-immediately settings</li>
+            <li>Import from question banks; imported questions stay live-linked until you unlink them</li>
+            <li>Sessions per quiz, each with its own QR code and join link, open and close times, attempts per person and a certificate toggle</li>
+            <li>Draft and published status; duplicate quizzes and sessions</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Quiz analytics</h3><p class="module-sum">What happened in each session.</p></div>
+          <ul class="ticks">
+            <li>Summary, Individual and Question tabs, for one session or across all of them</li>
+            <li>Pass counts, attempt detail view and delete attempt</li>
+            <li>Export to Excel and PDF</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Surveys</h3><p class="module-sum">Scored assessments and plain surveys.</p></div>
+          <ul class="ticks">
+            <li>Sections with five item types: 1&ndash;5 Likert, single select, scored single select, multi-select and open text</li>
+            <li>Reverse-scored items and per-section averages</li>
+            <li>Custom score tiers per survey, each with its own name and recommendation text</li>
+            <li>Survey banks; importing copies items, so a live survey never changes underneath respondents</li>
+            <li>Sessions with a custom URL slug, anonymous or identified (name, email, phone, organisation), optional email notification per submission, optional results for the respondent, and a public listing</li>
+            <li>A QR code for every session</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Survey analytics</h3><p class="module-sum">Making the responses usable.</p></div>
+          <ul class="ticks">
+            <li>Summaries per session and per survey, with a breakdown for every question</li>
+            <li>Free-text answers collected in one place</li>
+            <li>Respondent log and detail view, delete a response, export</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Articles and comments</h3><p class="module-sum">A small publishing workflow.</p></div>
+          <ul class="ticks">
+            <li>Rich-text editor written in vanilla JavaScript with no library: formatting, links, inline images and an HTML source view</li>
+            <li>Cover and body image upload; slugs generated and checked for uniqueness</li>
+            <li>Categories, tags, published date, and a draft, pending review and published workflow (public submissions arrive as pending)</li>
+            <li>Comment moderation: approve or delete, an editable flagged-word list, and automatic holds for same-IP floods and rapid reposts</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Members</h3><p class="module-sum">Everyone who has a login.</p></div>
+          <ul class="ticks">
+            <li>Add, edit and remove members; see who has activated</li>
+            <li>Send activation emails with a link that is valid for 48 hours</li>
+            <li>Members are also created automatically when a certificate is issued to a new email</li>
+            <li>Export to Excel and PDF</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Leads</h3><p class="module-sum">Registrations and messages in one place.</p></div>
+          <ul class="ticks">
+            <li>Course registrations and contact messages, searchable, with a detail view</li>
+            <li>Bulk select, and delete with confirmation</li>
+            <li>Export to CSV, Excel and PDF</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Activity and logs</h3><p class="module-sum">Who used the site and what staff changed.</p></div>
+          <ul class="ticks">
+            <li>Visits overview: unique sessions, IPs and users, top pages, top IPs and top countries</li>
+            <li>Raw visit log filterable by date, country, IP and session, with referrer and time on page</li>
+            <li>Audit log of data changes and sign-ins, and a separate admin-actions log</li>
+            <li>Bots filtered out and visitor country read from Cloudflare headers; export to Excel, CSV and PDF</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Training media</h3><p class="module-sum">Large files with a stable public link.</p></div>
+          <ul class="ticks">
+            <li>Upload video, documents, slides and images up to 1 GB, with a progress bar</li>
+            <li>Link a file to a course so participants see it in their materials</li>
+            <li>Copy the public URL or an embed code; documents open in an in-site viewer</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Homepage ticker</h3><p class="module-sum">The scrolling line on the home page.</p></div>
+          <ul class="ticks">
+            <li>Add, reorder, disable and remove items, then save or discard</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>QR codes</h3><p class="module-sum">Branded codes for every session.</p></div>
+          <ul class="ticks">
+            <li>Dot style (dots, rounded, classy rounded, extra rounded), colours, logo and size</li>
+            <li>Download as PNG or SVG; the style is saved with the session</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Flowchart tool</h3><p class="module-sum">A diagram editor that runs in the browser.</p></div>
+          <ul class="ticks">
+            <li>A draw.io-style editor in about 4,800 lines of vanilla JavaScript</li>
+            <li>Start/end, process and decision shapes with connectors</li>
+            <li>Smart alignment guides, snapping, zoom and fit</li>
+            <li>Undo and redo, layer order, duplicate, and a style, text and arrange inspector</li>
+            <li>Autosaves in the browser; export as PNG</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Patterns every page shares</h3><p class="module-sum">So the admin feels like one product.</p></div>
+          <ul class="ticks">
+            <li>Slide-over edit panels, and delete dialogs that list exactly what will be removed</li>
+            <li>An unsaved-changes guard on every builder, for in-app navigation and for closing the tab</li>
+            <li>Sidebar with live badges, and a drawer on mobile</li>
+            <li>Search, filters and pagination on lists; snackbar feedback on every action</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="participants">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What participants and members see</h2>
+      <p class="mp-intro">The parts of the platform used by people who are not staff, all fed by the admin above.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Quiz player</h3><p class="module-sum">Join, answer, get a result.</p></div>
+          <ul class="ticks">
+            <li>Join from a QR code or a short link; name and email first</li>
+            <li>Countdown timer with a warning in the last 30 seconds</li>
+            <li>Answers survive a dropped connection or a refresh</li>
+            <li>Instant score and tier: Achievements at 90%, Completion at 70%, otherwise Attendance. The matching certificate is issued automatically, and a retake can only upgrade it</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Survey player</h3><p class="module-sum">Long surveys that are easy to finish.</p></div>
+          <ul class="ticks">
+            <li>Questions grouped by section, with a progress bar and a section tracker</li>
+            <li>A &ldquo;resume your response&rdquo; prompt when someone comes back</li>
+            <li>A clear anonymity badge, and an optional results screen with their tier and recommendation</li>
+            <li>Layouts built for phones</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Certificate verification</h3><p class="module-sum">Anyone can check a certificate.</p></div>
+          <ul class="ticks">
+            <li>A public verify page that reports valid, revoked or not found</li>
+            <li>Verifications are counted and shown on the admin dashboard</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Member portal</h3><p class="module-sum">A home for people who have certificates.</p></div>
+          <ul class="ticks">
+            <li>Register, or activate from an emailed link; one sign-in page for staff and members</li>
+            <li>Dashboard with recent certificates, and a profile page</li>
+            <li>Certificate preview and PDF download</li>
+            <li>A course resources page with videos and materials</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="engineering">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Under the hood</h2>
+      <p class="mp-intro">The engineering that does not show up on a screenshot.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Security</h3><p class="module-sum">Sign-in, uploads and spam.</p></div>
+          <ul class="ticks">
+            <li>Passwords hashed with BCrypt; sign-in lockout after repeated failures, with staff and member lockouts kept separate</li>
+            <li>Sessions expire, and every admin page checks sign-in before it loads any data</li>
+            <li>Uploads limited to allow-listed file types, stored under random filenames, and sent through a one-time ticket</li>
+            <li>An audit trail of admin sign-ins and changes, and spam holds on public comments</li>
+            <li>Visitor IP resolved from Cloudflare, Akamai or proxy headers</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Reliability under load</h3><p class="module-sum">A room of people on one QR code.</p></div>
+          <ul class="ticks">
+            <li>Blazor Server circuits tuned for flaky mobile connections: 30-minute retention, 300 retained circuits and a larger render-batch buffer</li>
+            <li>That is what lets a per-second quiz timer survive a short disconnect without forcing a reload</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Performance</h3><p class="module-sum">Keeping pages quick.</p></div>
+          <ul class="ticks">
+            <li>In-memory caches for courses, categories, the calendar and articles</li>
+            <li>A five-minute cache with a stampede lock on the live feeds, and a one-hour cache header on the sitemap</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Data and email</h3><p class="module-sum">The plumbing.</p></div>
+          <ul class="ticks">
+            <li>EF Core on MariaDB/MySQL through a DbContext factory, across 36 data models</li>
+            <li>One shared export helper for Excel, CSV and PDF</li>
+            <li>Seven HTML email templates: certificate invite and ready, member activation, registration, message, survey and article submission notifications</li>
+          </ul>
+        </div>
+    </div>
   </div>
 </section>
 
 <section class="pad-top-0">
   <div class="wrap">
     <nav class="next-up" aria-label="More projects">
-      <a class="next-link" href="iseliaintel.html">
-        <span><span class="next-label">Next project</span><span class="next-name">iSeliaIntel</span></span>
+      <a class="next-link" href="pnms.html">
+        <span><span class="next-label">Next project</span><span class="next-name">Puncak Nilam (PNMS)</span></span>
         <svg class="project-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <div class="next-sub">
