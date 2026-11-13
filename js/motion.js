@@ -69,8 +69,6 @@
   (function () {
     var header = document.querySelector('header');
     var menu = document.getElementById('site-menu');
-    var thread = document.querySelector('.thread');
-    var cssThread = window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()');
     if (!header) return;
     var last = scrollY, queued = false;
     function update() {
@@ -81,10 +79,6 @@
       if (!reduce && !open) header.classList.toggle('tucked', y > 420 && y > last + 2);
       if (y < last - 2 || y < 420) header.classList.remove('tucked');
       last = y;
-      if (thread && !cssThread && !reduce) {
-        var max = document.documentElement.scrollHeight - innerHeight;
-        thread.style.transform = 'scaleX(' + (max > 0 ? y / max : 0).toFixed(4) + ')';
-      }
     }
     addEventListener('scroll', function () { if (!queued) { queued = true; raf(update); } }, { passive: true });
     update();
@@ -123,6 +117,157 @@
     });
   }
 
+
+
+  /* ---------- statement: words light up as you read down ---------- */
+  (function () {
+    var host = document.querySelector('[data-moment="word-highlight"] .mo-wh__text');
+    if (!host || reduce) return;
+    function wrapText(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 1) { wrapText(n); return; }
+        if (n.nodeType !== 3) return;
+        var frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function (p) {
+          if (!p) return;
+          if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(p)); return; }
+          var w = document.createElement('span'); w.className = 'wh-w'; w.textContent = p; frag.appendChild(w);
+        });
+        n.parentNode.replaceChild(frag, n);
+      });
+    }
+    wrapText(host);
+    host.classList.add('wh');
+    var words = host.querySelectorAll('.wh-w'), last = -1, queued = false;
+    function upd() {
+      queued = false;
+      var r = host.getBoundingClientRect(), vh = innerHeight;
+      var start = vh * 0.85, end = vh * 0.45;
+      var t = Math.max(0, Math.min(1, (start - r.top) / Math.max(1, (start - end) + r.height)));
+      var atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 2;
+      var k = atEnd ? words.length : Math.round(t * words.length);
+      if (k === last) return;
+      last = k;
+      for (var i = 0; i < words.length; i++) words[i].classList.toggle('on', i < k);
+    }
+    addEventListener('scroll', function () { if (!queued) { queued = true; raf(upd); } }, { passive: true });
+    addEventListener('resize', upd);
+    upd();
+  })();
+
+  /* ---------- projects bath: the new ground opens through a circle ---------- */
+  (function () {
+    var sec = document.querySelector('[data-moment="iris-opens"]');
+    if (!sec || reduce) return;
+    var cover = document.createElement('div'); cover.className = 'iris-cover'; cover.setAttribute('aria-hidden', 'true');
+    var ring = document.createElement('div'); ring.className = 'iris-ring'; ring.setAttribute('aria-hidden', 'true');
+    sec.appendChild(cover); sec.appendChild(ring);
+    sec.classList.add('iris-on');
+    var queued = false, done = false;
+    function upd() {
+      queued = false;
+      var r = sec.getBoundingClientRect(), vh = innerHeight;
+      var u = Math.max(0, Math.min(1, (vh * 0.98 - r.top) / (vh * 0.78)));
+      var t = 1 - (1 - u) * (1 - u);
+      var v0 = Math.max(0, r.top), v1 = Math.min(vh, r.bottom);
+      var cx = r.width / 2, cy = (v0 - r.top) + Math.max(0, v1 - v0) / 2;
+      var R = Math.hypot(Math.max(cx, r.width - cx), Math.max(cy, r.height - cy)) + 2;
+      sec.style.setProperty('--cx', cx.toFixed(1) + 'px');
+      sec.style.setProperty('--cy', cy.toFixed(1) + 'px');
+      sec.style.setProperty('--r', (t * R).toFixed(1) + 'px');
+      sec.style.setProperty('--ro', (1 - Math.max(0, (t - 0.85) / 0.15)).toFixed(3));
+      sec.style.setProperty('--wo', Math.max(0, Math.min(1, (t - 0.15) / 0.45)).toFixed(3));
+      var d = t >= 0.999;
+      if (d !== done) { done = d; sec.classList.toggle('iris-done', d); }
+    }
+    addEventListener('scroll', function () { if (!queued) { queued = true; raf(upd); } }, { passive: true });
+    addEventListener('resize', upd);
+    upd();
+  })();
+
+  /* ---------- little toasts (same look as main.js) ---------- */
+  function toast(text, ms) {
+    var el = document.createElement('div');
+    el.className = 'egg-toast'; el.setAttribute('role', 'status'); el.textContent = text;
+    document.body.appendChild(el);
+    raf(function () { raf(function () { el.classList.add('show'); }); });
+    setTimeout(function () { el.classList.remove('show'); setTimeout(function () { el.remove(); }, 320); }, ms || 2600);
+  }
+
+  /* ---------- teh tarik: pulled high, poured back, served ---------- */
+  var pouring = false;
+  function pourTeh() {
+    if (pouring) return;
+    if (reduce) { toast('Teh tarik satu, siap!'); return; }
+    pouring = true;
+    var o = document.createElement('div');
+    o.className = 'pour'; o.setAttribute('aria-hidden', 'true');
+    o.innerHTML = '<svg viewBox="0 0 200 360">' +
+      '<g class="p-mug"><path class="p-tea" d="M100 30H146V74H100Z"/><path class="p-line" d="M96 20H150V78H96Z"/><path class="p-line" d="M150 32C166 34 166 62 150 64"/></g>' +
+      '<path class="p-stream" d="M100 82V252"/>' +
+      '<path class="p-tea p-fill" d="M66.6 262 75.6 341H132.4L141.4 262Z"/>' +
+      '<path class="p-froth" d="M65 252C88 244 120 244 143 252L141.6 266C120 259 88 259 66.4 266Z"/>' +
+      '<path class="p-line" d="M62 242 73 346H135L146 242"/>' +
+      '<path class="p-steam" d="M92 236C86 226 98 220 92 208"/><path class="p-steam" d="M118 236C112 226 124 220 118 208"/>' +
+      '</svg>';
+    document.body.appendChild(o);
+    setTimeout(function () { toast('Teh tarik satu, siap!'); }, 1900);
+    setTimeout(function () { o.remove(); pouring = false; }, 3050);
+  }
+
+  /* ---------- emergency meeting: somebody typed "sus" ---------- */
+  var meeting = false;
+  function emergency() {
+    if (meeting) return;
+    if (reduce) { toast('Emergency meeting. Somebody here is sus.', 3000); return; }
+    meeting = true;
+    var o = document.createElement('div');
+    o.className = 'meeting'; o.setAttribute('role', 'alert');
+    var word = function (w, base) {
+      return '<span class="m-word">' + Array.prototype.map.call(w, function (c, i) {
+        return '<span style="--i:' + (base + i) + '">' + c + '</span>';
+      }).join('') + '</span>';
+    };
+    o.innerHTML = '<div class="m-beams"></div><div class="m-flash"></div>' +
+      '<div class="m-stage">' +
+        '<svg class="m-siren" viewBox="0 0 120 120" aria-hidden="true"><path class="m-dome" d="M30 82C30 44 44 26 60 26S90 44 90 82Z"/><path class="m-shine" d="M44 70C44 50 50 40 58 36"/><rect class="m-base" x="20" y="82" width="80" height="16" rx="4"/><path class="m-ray" d="M60 6V16M24 24 31 31M96 24 89 31M6 60H16M114 60H104"/></svg>' +
+        '<p class="m-title" aria-label="Emergency meeting">' + word('EMERGENCY', 0) + word('MEETING', 9) + '</p>' +
+        '<p class="m-sub">Somebody typed <b>sus</b>. Discuss.</p>' +
+      '</div>';
+    document.body.appendChild(o);
+    var main = document.getElementById('main');
+    if (main) { main.classList.add('m-shake'); setTimeout(function () { main.classList.remove('m-shake'); }, 700); }
+    setTimeout(function () { o.classList.add('out'); }, 2900);
+    setTimeout(function () { o.remove(); meeting = false; }, 3400);
+  }
+
+  // triggers: main.js typing buffer, buttons on the page, and the command palette (via hash)
+  addEventListener('teh-tarik', pourTeh);
+  addEventListener('emergency-meeting', emergency);
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('[data-teh], [data-sus]');
+    if (!t) return;
+    if (t.hasAttribute('data-teh')) pourTeh(); else emergency();
+  });
+  function fromHash() {
+    var h = location.hash;
+    if (h !== '#teh-tarik' && h !== '#emergency-meeting') return;
+    var pal = document.querySelector('.palette-overlay:not([hidden])');
+    if (pal) pal.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    history.replaceState(null, '', location.pathname + location.search);
+    if (h === '#teh-tarik') pourTeh(); else emergency();
+  }
+  addEventListener('hashchange', fromHash);
+  setTimeout(fromHash, 400);
+
+  // on touch, tapping a menu item plays its dish once
+  document.querySelectorAll('.menu-item').forEach(function (li) {
+    li.addEventListener('click', function () {
+      li.classList.remove('play'); void li.offsetWidth; li.classList.add('play');
+      clearTimeout(li.__t); li.__t = setTimeout(function () { li.classList.remove('play'); }, 1400);
+    });
+  });
+
   if (reduce) return; // everything below only moves things
 
   /* ---------- scroll stamps: lists arrive one block at a time ---------- */
@@ -130,7 +275,7 @@
     var sel = [
       '.projects > li', '.module', '.tl-item', '.cert-list > li', '.features > li', '.social > li',
       '.fact', '.figure', '.now', '.resume-cta', '.contact-form', '.about > p', '.group-title',
-      '.case-lead', '.more', '.jump', '.next-up', '.statement-note', '.foot-word > span', '.snake-wrap', '#giscus-host'
+      '.case-lead', '.more', '.jump', '.menu-item', '.board-foot', '.game', '.next-up', '.statement-note', '.foot-word > span', '.snake-wrap', '#giscus-host'
     ].join(',');
     var items = Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function (el) {
       return !el.closest('.hero');
@@ -154,6 +299,7 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     items.concat(heads).forEach(function (el) { io.observe(el); });
+    document.querySelectorAll('.tile-floor').forEach(function (el) { io.observe(el); });
   })();
 
   /* ---------- the timeline's wax line draws as you read down it ---------- */
@@ -226,11 +372,29 @@
     var dyes = ['saffron', 'madder', 'indigo', 'wax'];
     var btn = cloth.querySelector('.cloth-pause');
     var paused = false, visible = true, timer = null, last = -1;
+    var bank = {};
+    var tpl = document.getElementById('motif-bank');
+    if (tpl && tpl.content) Array.prototype.forEach.call(tpl.content.querySelectorAll('svg'), function (sv) { bank[sv.getAttribute('data-m')] = sv; });
+    var names = Object.keys(bank);
+    function pick(list, not) {
+      var opts = list.filter(function (x) { return not.indexOf(x) === -1; });
+      return opts[Math.floor(Math.random() * opts.length)];
+    }
     function stamp(t, newDye) {
       if (newDye) {
-        var cur = t.getAttribute('data-dye');
-        var opts = dyes.filter(function (d) { return d !== cur; });
-        t.setAttribute('data-dye', opts[Math.floor(Math.random() * opts.length)]);
+        t.setAttribute('data-dye', pick(dyes, [t.getAttribute('data-dye')]));
+        // a fresh block: sometimes batik, sometimes something from the kopitiam
+        if (names.length && Math.random() < 0.7) {
+          var onCloth = tiles.map(function (x) { return x.getAttribute('data-motif'); });
+          var m = pick(names, onCloth);
+          if (m) {
+            var old = t.querySelector('svg');
+            var fresh = bank[m].cloneNode(true);
+            fresh.removeAttribute('data-m');
+            if (old) t.replaceChild(fresh, old); else t.appendChild(fresh);
+            t.setAttribute('data-motif', m);
+          }
+        }
       }
       t.classList.remove('restamp');
       void t.offsetWidth;

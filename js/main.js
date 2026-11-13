@@ -78,7 +78,14 @@
 
       if (e.key.length === 1) {
         buffer = (buffer + e.key.toLowerCase()).slice(-3);
-        if (buffer === 'sus') showToast('emergency meeting: this dev might be sus', 3000);
+        if (buffer === 'sus') {
+          if (window.__motion) window.dispatchEvent(new Event('emergency-meeting'));
+          else showToast('Emergency meeting. Somebody here is sus.', 3000);
+        }
+        if (buffer === 'teh') {
+          if (window.__motion) window.dispatchEvent(new Event('teh-tarik'));
+          else showToast('Teh tarik satu, siap!', 3000);
+        }
       }
     });
   })();
@@ -146,7 +153,9 @@
       { name: 'iSusun', tag: 'project kanban open source docker', href: P + W + 'isusun.html' },
       { name: 'star8892', tag: 'project alumni social network', href: P + W + 'star8892.html' },
       { name: 'Autumn Twilight', tag: 'project mud dragonlance ongoing', href: P + W + 'autumn-twilight.html' },
-      { name: 'Résumé (PDF)', tag: 'download cv resume', href: P + 'resume.pdf' }
+      { name: 'Résumé (PDF)', tag: 'download cv resume', href: P + 'resume.pdf' },
+      { name: 'Order a teh tarik', tag: 'teh tarik kopitiam drink malaysia mamak', href: '#teh-tarik' },
+      { name: 'Call an emergency meeting', tag: 'sus among us impostor games', href: '#emergency-meeting' }
     ];
     var overlay, input, list, shown = [], active = 0, opener = null;
 
@@ -359,8 +368,12 @@
     function draw() {
       ctx.fillStyle = css('--surface', '#1E1B27');
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // the food is a ketupat: a woven diamond
+      var cx = food.x * size + size / 2, cy = food.y * size + size / 2, r = size / 2 - 1.5;
       ctx.fillStyle = css('--madder-fill', '#E0563F');
-      ctx.fillRect(food.x * size + 2, food.y * size + 2, size - 4, size - 4);
+      ctx.beginPath(); ctx.moveTo(cx, cy - r); ctx.lineTo(cx + r, cy); ctx.lineTo(cx, cy + r); ctx.lineTo(cx - r, cy); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = css('--saffron-fill', '#F4AA3A'); ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(cx - r / 2, cy - r / 2); ctx.lineTo(cx + r / 2, cy + r / 2); ctx.moveTo(cx + r / 2, cy - r / 2); ctx.lineTo(cx - r / 2, cy + r / 2); ctx.stroke();
       ctx.fillStyle = css('--saffron-fill', '#F4AA3A');
       snake.forEach(function (s, i) {
         ctx.globalAlpha = i === 0 ? 1 : 0.75;

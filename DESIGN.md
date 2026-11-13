@@ -21,6 +21,12 @@ Footer is always deep indigo #070B1E. Fills carry dye; text variants keep AA con
 ## Motifs
 CSS mask tiles in `:root`: kawung (four ovals), parang (diagonal bands), ceplok (nested lozenge), tumpal (triangle selvedge). They take the colour of the element's background.
 
+## Kopitiam layer
+Teh #C9874A, froth #F6E9D2, roti #E7BF72, satay #C8432D on stick #C99A5B, pandan #5DB27A, gula melaka #7A4320. The menu board is green enamel #1B4333 in a wood frame #6E4424 in both themes. Peranakan floor tile: cream, pandan corners, madder petals, indigo diamond.
+
+## Off the clock
+HUD cards with corner brackets, one accent per game. Glyphs are generic (crosshair, three-lane minimap, timer ring, alarm button, neon skyline): never game logos or characters.
+
 ## Shape
 Radius 3px for blocks, pill (999px) for buttons and chips. Hairline 1px rules in `--line`.
 

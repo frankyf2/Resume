@@ -66,7 +66,7 @@ body::before{content:""; position:fixed; inset:-50%; z-index:400; pointer-events
 ::-webkit-scrollbar{width:11px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--line); border:3px solid var(--bg); border-radius:8px;}
 img{max-width:100%; height:auto; display:block;}
 a{color:inherit; text-underline-offset:.22em; text-decoration-thickness:1px;}
-.wrap{max-width:1240px; margin:0 auto; padding:0 clamp(20px,4vw,48px);}
+.wrap{max-width:1440px; margin:0 auto; padding:0 clamp(20px,4vw,48px);}
 section{padding:clamp(64px,10vw,128px) 0;}
 h1,h2,h3{font-family:var(--display); font-weight:760; letter-spacing:-0.012em; text-wrap:balance; font-variation-settings:"wdth" 94, "opsz" 36;}
 p,li{text-wrap:pretty;}
@@ -99,13 +99,6 @@ header{view-transition-name:site-header;}
 .curtain.out{animation:curtain-out 760ms var(--ease-io) forwards;}
 @keyframes curtain-out{to{clip-path:inset(0 0 100% 0);}}
 .curtain{clip-path:inset(0 0 0 0);}
-
-/* ---------- SCROLL THREAD (selvedge thread across the top) ---------- */
-.thread{position:fixed; left:0; right:0; top:0; height:3px; z-index:60; transform-origin:0 50%; transform:scaleX(0); background:linear-gradient(90deg,var(--madder-fill),var(--saffron-fill)); pointer-events:none;}
-@supports (animation-timeline:scroll()){
-  .thread{animation:thread linear both; animation-timeline:scroll(root);}
-  @keyframes thread{to{transform:scaleX(1);}}
-}
 
 /* ---------- CURSOR (canting tip + wax ring; fine pointers only) ---------- */
 .cur-dot,.cur-ring{position:fixed; left:0; top:0; z-index:700; pointer-events:none; border-radius:50%; opacity:0; transition:opacity 200ms ease;}
@@ -277,7 +270,7 @@ header nav a[aria-current="page"]::after{transform:scaleX(1);}
 
 /* ---------- STATEMENT (word-highlight moment) ---------- */
 .statement{padding:clamp(90px,14vw,180px) 0; position:relative;}
-.statement .mo-wh__text{max-width:21ch; font-size:clamp(34px,5.2vw,72px); line-height:1.06; letter-spacing:-0.018em; font-variation-settings:"wdth" 90, "opsz" 36;}
+.statement .mo-wh__text{font-family:var(--display); font-weight:780; max-width:21ch; font-size:clamp(34px,5.2vw,72px); line-height:1.06; letter-spacing:-0.018em; font-variation-settings:"wdth" 90, "opsz" 36;}
 .statement .mo-wh__text strong{color:var(--saffron); font-weight:inherit;}
 .statement-note{margin-top:40px; display:flex; gap:12px; align-items:center; font:13px/1.4 var(--mono); color:var(--ink-faint);}
 .statement-note::before{content:""; width:46px; height:2px; background:var(--madder-fill);}
@@ -558,7 +551,6 @@ footer :focus-visible{outline-color:var(--saffron-fill);}
   header.tucked{transform:none;}
   .roll > span{transition:none;}
   .cur-dot,.cur-ring{display:none;}
-  .thread{display:none;}
 }
 
 /* ---------- curtain visibility, native cursor swap ---------- */
@@ -576,3 +568,244 @@ footer :focus-visible{outline-color:var(--saffron-fill);}
 .js [data-enter] [data-split]:not(.is-split){visibility:hidden;}
 .js.st-safe [data-enter] [data-split]{visibility:visible;}
 .w-mask:has(.accent){padding-bottom:.24em; margin-bottom:-.24em;}
+
+/* =========================================================================
+   KOPITIAM — teh tarik, roti canai, satay, cendol, and the tiled floor
+   ========================================================================= */
+:root{
+  --board:#1B4333; --board-2:#163829; --board-ink:#F4EBD6; --board-dim:#D7CFB9; --wood:#6E4424; --wood-2:#4A2C15;
+  --teh:#C9874A; --froth:#F6E9D2; --roti:#E7BF72; --roti-fold:#9A6224; --meat:#C8432D; --stick:#C99A5B;
+  --pandan:#5DB27A; --gula:#7A4320; --santan:#F3ECDD;
+  --pat-tile:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%23EFE6D2'/%3E%3Cg fill='%233E8E5E'%3E%3Ccircle r='11'/%3E%3Ccircle cx='60' r='11'/%3E%3Ccircle cy='60' r='11'/%3E%3Ccircle cx='60' cy='60' r='11'/%3E%3C/g%3E%3Cpath d='M30 7 53 30 30 53 7 30Z' fill='none' stroke='%231C2C5C' stroke-width='2.2'/%3E%3Cg fill='%23D9553F'%3E%3Cellipse cx='30' cy='20' rx='5' ry='9'/%3E%3Cellipse cx='30' cy='40' rx='5' ry='9'/%3E%3Cellipse cx='20' cy='30' rx='9' ry='5'/%3E%3Cellipse cx='40' cy='30' rx='9' ry='5'/%3E%3C/g%3E%3Ccircle cx='30' cy='30' r='4.5' fill='%23F2A93B'/%3E%3Crect width='60' height='60' fill='none' stroke='%23C9BC9A' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+.kopitiam{position:relative; overflow:hidden; padding-bottom:0;}
+.kopi-grid{display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:clamp(36px,6vw,88px); align-items:start;}
+.kopi-intro{position:sticky; top:calc(var(--header-h) + 32px);}
+.kopi-intro h2{font-size:clamp(34px,5vw,64px); line-height:1.02; margin-bottom:22px;}
+.kopi-tip{margin-top:28px; font:13px/1.5 var(--mono); color:var(--ink-faint);}
+kbd{font:500 12px/1 var(--mono); padding:5px 8px; border-radius:4px; border:1px solid var(--line); border-bottom-width:3px; background:var(--surface); color:var(--ink);}
+
+.menu-board{position:relative; background:var(--board); color:var(--board-ink); border-radius:6px; padding:clamp(22px,3vw,40px);
+  box-shadow:0 0 0 10px var(--wood), 0 0 0 13px var(--wood-2), var(--shadow-pop); margin:13px;}
+.menu-board::before{content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; opacity:.08; background:var(--board-ink); -webkit-mask:var(--pat-kawung) 0 0/44px; mask:var(--pat-kawung) 0 0/44px;}
+.board-head{position:relative; display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding-bottom:16px; border-bottom:4px double color-mix(in srgb,var(--board-ink) 45%,transparent); margin-bottom:6px;}
+.board-title{font-family:var(--display); font-weight:800; font-size:clamp(36px,4.4vw,56px); letter-spacing:.18em; text-transform:uppercase; line-height:1; color:var(--saffron-fill);}
+.board-sub{font:13px/1.3 var(--mono); color:var(--board-dim); text-align:right;}
+.menu{list-style:none; position:relative;}
+.menu-item{display:grid; grid-template-columns:104px minmax(0,1fr); gap:22px; align-items:center; padding:22px 0; border-bottom:2px dotted color-mix(in srgb,var(--board-ink) 30%,transparent);}
+.menu-item:last-child{border-bottom:0;}
+.menu-ic{display:block; width:104px; height:104px; border-radius:50%; background:var(--board-2); box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--board-ink) 18%,transparent);}
+.menu-ic .ic{width:100%; height:100%; overflow:visible;}
+.menu-txt h3{display:flex; align-items:center; gap:12px; flex-wrap:wrap; font-size:clamp(22px,2.2vw,28px); line-height:1.1; text-transform:uppercase; letter-spacing:.02em; margin-bottom:8px; color:var(--board-ink);}
+.menu-code{font:500 12px/1 var(--mono); letter-spacing:.04em; padding:6px 8px; border-radius:3px; background:var(--madder-fill); color:#FFF4E4;}
+.menu-txt p{font-size:15.5px; line-height:1.55; color:var(--board-dim); max-width:46ch;}
+.board-foot{position:relative; display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding-top:22px; margin-top:6px; border-top:4px double color-mix(in srgb,var(--board-ink) 45%,transparent); font:13px/1.4 var(--mono); color:var(--board-dim);}
+.menu-board :focus-visible{outline-color:var(--saffron-fill);}
+
+/* icon parts */
+.ic .i-line{fill:none; stroke:var(--board-ink); stroke-width:3; stroke-linecap:round; stroke-linejoin:round;}
+.ic .i-tea{fill:var(--teh);}
+.ic .i-froth{fill:var(--froth);}
+.ic .i-stream{fill:none; stroke:var(--teh); stroke-width:5; stroke-linecap:round;}
+.ic .i-bread{fill:var(--roti);}
+.ic .i-fold{fill:none; stroke:var(--roti-fold); stroke-width:3; stroke-linecap:round;}
+.ic .i-char{fill:var(--roti-fold);}
+.ic .i-stick{fill:none; stroke:var(--stick); stroke-width:3.5; stroke-linecap:round;}
+.ic .i-meat{fill:var(--meat);}
+.ic .i-kuah{fill:#B5651D;}
+.ic .i-smoke{fill:none; stroke:var(--board-ink); stroke-width:2.2; stroke-linecap:round; opacity:.55;}
+.ic .i-santan{fill:var(--santan); opacity:.9;}
+.ic .i-jelly{fill:var(--pandan);}
+.ic .i-ice{fill:#FFFFFF; opacity:.92;}
+.ic .i-gula{fill:none; stroke:var(--gula); stroke-width:5; stroke-linecap:round;}
+.ic .i-drip{fill:var(--gula);}
+.ic .i-mug, .ic .i-fill, .ic .i-flip, .ic .i-drip, .ic .i-smoke{transform-box:fill-box;}
+.ic .i-mug{transform-origin:20% 60%;}
+.ic .i-fill{transform-origin:50% 100%;}
+.ic .i-flip{transform-origin:50% 50%;}
+.ic .i-stream{stroke-dasharray:7 5;}
+
+@media (prefers-reduced-motion:no-preference){
+  /* arrival: the icon is served */
+  .js .menu-item.st .menu-ic{transform:scale(.7) rotate(-12deg); opacity:0; transition:transform 800ms var(--ease-stamp), opacity 400ms ease; transition-delay:calc(var(--si,0) * 90ms + 150ms);}
+  .js .menu-item.st.in .menu-ic{transform:none; opacity:1;}
+  /* idle life: steam keeps rising off the satay, quietly */
+  .ic-satay .i-smoke{animation:smoke 2.8s ease-out infinite;}
+  .ic-satay .s2{animation-delay:.9s;} .ic-satay .s3{animation-delay:1.8s;}
+  @keyframes smoke{0%{opacity:0; transform:translateY(6px);} 30%{opacity:.6;} 100%{opacity:0; transform:translateY(-10px);}}
+  .kopitiam.paused .i-smoke{animation-play-state:paused;}
+  /* hover / focus: each dish does its thing */
+  .menu-item:is(:hover,:focus-within,.play) .i-stream{animation:pour 520ms linear infinite;}
+  .menu-item:is(:hover,:focus-within,.play) .i-mug{animation:tarik 1100ms var(--ease-io) infinite;}
+  .menu-item:is(:hover,:focus-within,.play) .i-fill{animation:tea-rise 1100ms var(--ease-io) infinite;}
+  @keyframes pour{to{stroke-dashoffset:-24;}}
+  @keyframes tarik{0%,100%{transform:translateY(0) rotate(0);} 50%{transform:translateY(-12px) rotate(-6deg);}}
+  @keyframes tea-rise{0%,100%{transform:scaleY(.82);} 50%{transform:scaleY(1);}}
+  .menu-item:is(:hover,:focus-within,.play) .i-flip{animation:flip 900ms var(--ease-io);}
+  @keyframes flip{0%{transform:none;} 45%{transform:translateY(-16%) rotate(200deg) scale(1.08,.86);} 100%{transform:rotate(360deg);}}
+  .menu-item:is(:hover,:focus-within,.play) .i-meat{animation:sizzle 360ms ease-in-out 3 alternate;}
+  @keyframes sizzle{to{fill:#E8613F;}}
+  .menu-item:is(:hover,:focus-within,.play) .i-smoke{animation-duration:1.1s;}
+  .menu-item:is(:hover,:focus-within,.play) .i-gula{stroke-dasharray:1; animation:draw 900ms var(--ease-out) both;}
+  .menu-item:is(:hover,:focus-within,.play) .i-drip{animation:drip 900ms ease-in 300ms both;}
+  @keyframes drip{0%{transform:translateY(-6px); opacity:0;} 30%{opacity:1;} 100%{transform:translateY(16px); opacity:0;}}
+  .menu-item:is(:hover,:focus-within,.play) .i-santan{animation:santan 900ms ease-in-out;}
+  @keyframes santan{50%{fill:#FFFFFF;}}
+}
+.ic-cendol .i-gula{stroke-dasharray:none;}
+
+/* the kopitiam floor: Peranakan tiles laid in perspective */
+.tile-floor{position:relative; height:clamp(150px,19vw,240px); margin-top:clamp(8px,2vw,24px); transform:perspective(560px) rotateX(52deg); transform-origin:50% 100%; -webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%); mask-image:linear-gradient(to bottom,transparent,#000 70%);}
+.tile-floor::before{content:""; position:absolute; inset:0; background:var(--pat-tile) 0 0/72px 72px;}
+@media (prefers-reduced-motion:no-preference){
+  .js .tile-floor::before{clip-path:inset(0 100% 0 0); transition:clip-path 1600ms var(--ease-io);}
+  .js .tile-floor.in::before{clip-path:inset(0 0 0 0);}
+}
+@media (max-width:860px){
+  .kopi-grid{grid-template-columns:1fr;}
+  .kopi-intro{position:static;}
+  .menu-board{margin:10px;}
+}
+@media (max-width:520px){
+  .menu-item{grid-template-columns:72px minmax(0,1fr); gap:16px;}
+  .menu-ic{width:72px; height:72px;}
+  .board-head{flex-direction:column; align-items:flex-start;}
+  .board-sub{text-align:left;}
+}
+
+/* =========================================================================
+   TEH TARIK POUR — type "teh", press the board button, or ask the palette
+   ========================================================================= */
+.pour{position:fixed; inset:0; z-index:650; display:grid; place-items:center; background:color-mix(in srgb,var(--deep) 82%,transparent); pointer-events:none; opacity:0; animation:pour-veil 3000ms ease both;}
+@keyframes pour-veil{0%{opacity:0;} 8%,82%{opacity:1;} 100%{opacity:0;}}
+.pour svg{width:min(260px,52vw); height:auto; overflow:visible;}
+.pour .p-line{fill:none; stroke:#F4EBD6; stroke-width:4; stroke-linecap:round; stroke-linejoin:round;}
+.pour .p-tea{fill:var(--teh);} .pour .p-froth{fill:var(--froth);}
+.pour .p-stream{fill:none; stroke:var(--teh); stroke-width:9; stroke-linecap:round;}
+.pour .p-mug,.pour .p-stream,.pour .p-fill,.pour .p-froth,.pour .p-steam{transform-box:fill-box;}
+.pour .p-mug{transform-origin:85% 30%; animation:p-mug 2400ms var(--ease-io) both;}
+@keyframes p-mug{0%{transform:translateY(-60px); opacity:0;} 14%{transform:translateY(0) rotate(0); opacity:1;} 24%{transform:rotate(-38deg);} 42%{transform:translateY(-70px) rotate(-38deg);} 58%{transform:translateY(0) rotate(-38deg);} 72%{transform:translateY(-70px) rotate(-38deg);} 86%{transform:translateY(0) rotate(-38deg);} 100%{transform:translateY(0) rotate(0);}}
+.pour .p-stream{transform-origin:50% 100%; animation:p-stream 2400ms var(--ease-io) both;}
+@keyframes p-stream{0%,22%{transform:scaleY(0);} 28%{transform:scaleY(1);} 42%{transform:scaleY(1.32);} 58%{transform:scaleY(1);} 72%{transform:scaleY(1.32);} 86%{transform:scaleY(1);} 96%,100%{transform:scaleY(0);}}
+.pour .p-fill{transform-origin:50% 100%; animation:p-fill 2400ms var(--ease-out) both;}
+@keyframes p-fill{0%,26%{transform:scaleY(0);} 90%,100%{transform:scaleY(1);}}
+.pour .p-froth{transform-origin:50% 100%; animation:p-froth 2400ms var(--ease-out) both;}
+@keyframes p-froth{0%,70%{transform:scaleY(0); opacity:0;} 92%,100%{transform:scaleY(1); opacity:1;}}
+.pour .p-steam{fill:none; stroke:#F4EBD6; stroke-width:3; stroke-linecap:round; opacity:0; animation:p-steam 1200ms ease-out 1900ms both;}
+@keyframes p-steam{0%{opacity:0; transform:translateY(8px);} 40%{opacity:.7;} 100%{opacity:0; transform:translateY(-14px);}}
+
+/* footer: one line of where this is made */
+.foot-made{display:inline-flex; align-items:center; gap:8px;}
+.foot-made svg{width:16px; height:20px; overflow:visible;}
+.foot-made .g{fill:none; stroke:rgba(245,238,223,.72); stroke-width:1.6; stroke-linejoin:round;}
+.foot-made .t{fill:var(--teh);}
+.foot-made .s{fill:none; stroke:rgba(245,238,223,.6); stroke-width:1.4; stroke-linecap:round;}
+@media (prefers-reduced-motion:no-preference){ .foot-made .s{animation:smoke 2.6s ease-out infinite;} .foot-made .s + .s{animation-delay:1.3s;} }
+
+/* =========================================================================
+   OFF THE CLOCK — games, drawn as HUD cards (original glyphs, no game art)
+   ========================================================================= */
+.games{list-style:none; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px;}
+.game{position:relative; isolation:isolate; display:flex; flex-direction:column; gap:6px; padding:22px 20px 24px; min-height:260px; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); overflow:hidden;
+  transition:border-color 300ms ease, transform 300ms var(--ease-out);}
+/* HUD corner brackets */
+.game::before,.game::after{content:""; position:absolute; width:16px; height:16px; border:2px solid var(--gc,var(--saffron-fill)); pointer-events:none; transition:transform 420ms var(--ease-out);}
+.game::before{top:8px; left:8px; border-right:0; border-bottom:0;}
+.game::after{bottom:8px; right:8px; border-left:0; border-top:0;}
+.game[data-game="cs2"]{--gc:#F4AA3A;}
+.game[data-game="dota"]{--gc:#E0563F;}
+.game[data-game="valorant"]{--gc:#FF5A5F;}
+.game[data-game="amongus"]{--gc:#E5383B;}
+.game[data-game="cyberpunk"]{--gc:#F2E94E;}
+.game-glyph{display:block; width:96px; height:96px; margin:4px 0 auto; color:var(--gc);}
+.game-glyph svg{width:100%; height:100%; overflow:visible;}
+.game-glyph *{transform-box:fill-box; transform-origin:center;}
+.g-line,.g-lane,.g-track,.g-city{fill:none; stroke:var(--ink-dim); stroke-width:3; stroke-linecap:round; stroke-linejoin:round;}
+.g-track{stroke:var(--line);}
+.g-hot,.g-alarm{fill:none; stroke:var(--gc); stroke-width:3.5; stroke-linecap:round;}
+.g-dot,.g-ping,.g-base.a{fill:var(--gc);}
+.g-base.b{fill:var(--ink-dim);}
+.g-timer{fill:none; stroke:var(--gc); stroke-width:4; stroke-linecap:round; stroke-dasharray:1; stroke-dashoffset:.25; transform:rotate(-90deg);}
+.g-btn{fill:var(--gc);}
+.g-glint{fill:none; stroke:#FFE3E3; stroke-width:3; stroke-linecap:round; opacity:.8;}
+.g-sign{fill:var(--gc);}
+.game-name{font-size:22px; line-height:1.15; margin-top:18px; position:relative;}
+.game-kind{font:12.5px/1.4 var(--mono); color:var(--ink-faint);}
+.game-act{align-self:flex-start; margin-top:10px; font:600 13px/1 var(--sans); color:var(--on-madder); background:#E5383B; border:0; border-radius:999px; padding:10px 14px; min-height:36px; cursor:pointer; transition:transform 160ms var(--ease-out);}
+.game-act:active{transform:scale(.95);}
+@media (hover:hover) and (pointer:fine){
+  .game:hover{border-color:var(--gc); transform:translateY(-3px);}
+  .game:hover::before{transform:translate(-3px,-3px);} .game:hover::after{transform:translate(3px,3px);}
+  .game-act:hover{background:#FF4A4F;}
+}
+@media (prefers-reduced-motion:no-preference){
+  .game:hover .g-ticks{animation:recoil 420ms var(--ease-out);}
+  @keyframes recoil{0%{transform:scale(1);} 25%{transform:scale(1.35);} 100%{transform:scale(1);}}
+  .game:hover .g-ping{animation:ping 1s ease-out infinite;}
+  @keyframes ping{0%{transform:scale(1); opacity:1;} 100%{transform:scale(3.2); opacity:0;}}
+  .game:hover .g-base.a{animation:base 1s ease-in-out infinite alternate;}
+  @keyframes base{to{transform:scale(1.25);}}
+  .game:hover .g-timer{animation:timer 2.4s linear both;}
+  @keyframes timer{from{stroke-dashoffset:0;} to{stroke-dashoffset:1;}}
+  .game:hover .g-btn{animation:press 600ms var(--ease-out);}
+  .game:hover .g-alarm{animation:alarm 400ms steps(2) infinite;}
+  @keyframes press{40%{transform:scaleY(.82) translateY(10%);}}
+  @keyframes alarm{50%{opacity:0;}}
+  .game:hover .game-name::before,.game:hover .game-name::after{content:attr(data-text); position:absolute; inset:0; pointer-events:none;}
+  .game[data-game="cyberpunk"]:hover .game-name::before{color:#00E5FF; animation:glitch-a 900ms steps(3) infinite; mix-blend-mode:screen;}
+  .game[data-game="cyberpunk"]:hover .game-name::after{color:#FF2E88; animation:glitch-b 900ms steps(3) infinite; mix-blend-mode:screen;}
+  .game[data-game="cyberpunk"]:hover .g-city{animation:flicker 1.2s steps(2) infinite;}
+  .game[data-game="cyberpunk"]:hover .g-sign{animation:alarm 300ms steps(2) infinite;}
+  @keyframes glitch-a{0%{transform:translate(-2px,0); clip-path:inset(0 0 60% 0);} 50%{transform:translate(2px,-1px); clip-path:inset(40% 0 20% 0);} 100%{transform:translate(-1px,1px); clip-path:inset(70% 0 0 0);}}
+  @keyframes glitch-b{0%{transform:translate(2px,0); clip-path:inset(50% 0 10% 0);} 50%{transform:translate(-2px,1px); clip-path:inset(0 0 70% 0);} 100%{transform:translate(1px,-1px); clip-path:inset(20% 0 50% 0);}}
+  @keyframes flicker{50%{stroke:var(--gc);}}
+  .game:not([data-game="cyberpunk"]):hover .game-name::before,.game:not([data-game="cyberpunk"]):hover .game-name::after{display:none;}
+}
+@media (max-width:1100px){ .games{grid-template-columns:repeat(3,minmax(0,1fr));} }
+@media (max-width:640px){ .games{grid-template-columns:repeat(2,minmax(0,1fr));} .game:last-child{grid-column:1 / -1; min-height:180px;} .game{min-height:220px; padding:18px 16px 20px;} .game-glyph{width:72px; height:72px;} .game-name{font-size:19px;} }
+
+/* =========================================================================
+   EMERGENCY MEETING — an original take: siren, red alert, the word slam
+   ========================================================================= */
+.meeting{position:fixed; inset:0; z-index:660; display:grid; place-items:center; overflow:hidden; background:#16040A; color:#FFF1F1; animation:m-in 260ms ease-out both;}
+.meeting.out{animation:m-out 480ms var(--ease-io) forwards;}
+@keyframes m-in{from{opacity:0;}}
+@keyframes m-out{to{opacity:0; transform:scale(1.04);}}
+.m-beams{position:absolute; left:50%; top:50%; width:220vmax; height:220vmax; margin:-110vmax 0 0 -110vmax; background:conic-gradient(from 0deg, transparent 0 20deg, rgba(229,56,59,.38) 30deg, transparent 40deg 200deg, rgba(229,56,59,.38) 210deg, transparent 220deg); animation:m-spin 1.1s linear infinite;}
+@keyframes m-spin{to{transform:rotate(360deg);}}
+.m-flash{position:absolute; inset:0; background:radial-gradient(circle at 50% 50%, transparent 30%, rgba(229,56,59,.75) 100%); animation:m-flash 560ms ease-in-out 5 alternate;}
+@keyframes m-flash{from{opacity:.25;} to{opacity:1;}}
+.meeting::after{content:""; position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 2px, transparent 2px 4px);}
+.m-stage{position:relative; z-index:1; text-align:center; padding:24px;}
+.m-siren{width:clamp(90px,14vw,140px); margin:0 auto 10px; display:block; overflow:visible; animation:m-drop 600ms var(--ease-stamp) both;}
+@keyframes m-drop{from{transform:translateY(-60vh);}}
+.m-dome{fill:#E5383B; animation:m-glow 280ms steps(2) infinite;}
+@keyframes m-glow{50%{fill:#FF7A7C;}}
+.m-shine{fill:none; stroke:#FFD6D6; stroke-width:5; stroke-linecap:round;}
+.m-base{fill:#3A1016; stroke:#FFF1F1; stroke-width:2;}
+.m-ray{fill:none; stroke:#FFD34D; stroke-width:4; stroke-linecap:round; animation:alarm 280ms steps(2) infinite;}
+.m-title{font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 76, "opsz" 36; font-size:clamp(46px,11vw,150px); line-height:.88; letter-spacing:-.01em; text-transform:uppercase; display:flex; flex-direction:column; align-items:center; text-shadow:0 6px 0 #6E0E15, 0 0 40px rgba(229,56,59,.6);}
+.m-word{display:flex;}
+.m-word span{display:inline-block; animation:m-slam 520ms var(--ease-stamp) both; animation-delay:calc(var(--i) * 34ms + 260ms);}
+.m-word + .m-word{color:#FFD34D;}
+@keyframes m-slam{0%{opacity:0; transform:scale(2.6) rotate(-6deg); filter:blur(10px);} 60%{opacity:1; filter:blur(0);} 100%{transform:none;}}
+.m-sub{margin-top:22px; font:600 clamp(15px,1.8vw,20px)/1.4 var(--mono); letter-spacing:.02em; animation:fade-up 500ms var(--ease-out) 1100ms both;}
+.m-sub b{color:#FFD34D;}
+#main.m-shake{animation:m-shake 600ms cubic-bezier(.36,.07,.19,.97) both;}
+@keyframes m-shake{10%,90%{transform:translateX(-2px);} 20%,80%{transform:translateX(4px);} 30%,50%,70%{transform:translateX(-8px);} 40%,60%{transform:translateX(8px);}}
+
+/* =========================================================================
+   SCROLL MOMENTS (plain script, no modules: works from disk too)
+   ========================================================================= */
+/* statement: each word turns from half ink to ink as you scroll through it */
+.wh .wh-w{color:color-mix(in srgb,var(--ink) 32%,var(--bg)); transition:color 200ms ease;}
+.wh .wh-w.on{color:var(--ink);}
+.wh strong .wh-w.on{color:var(--saffron);}
+/* projects bath: the new ground opens through a circle */
+.iris-cover{position:absolute; inset:0; z-index:2; pointer-events:none; background:var(--bg);
+  -webkit-mask:radial-gradient(circle at var(--cx,50%) var(--cy,50%), transparent var(--r,0px), #000 calc(var(--r,0px) + 1px));
+  mask:radial-gradient(circle at var(--cx,50%) var(--cy,50%), transparent var(--r,0px), #000 calc(var(--r,0px) + 1px));}
+.iris-ring{position:absolute; z-index:3; pointer-events:none; left:var(--cx,50%); top:var(--cy,50%); width:calc(var(--r,0px) * 2); height:calc(var(--r,0px) * 2); transform:translate(-50%,-50%); border-radius:50%; border:1.5px solid var(--saffron-fill); opacity:var(--ro,1);}
+.iris-on > .wrap{opacity:var(--wo,1);}
+.iris-done .iris-cover,.iris-done .iris-ring{display:none;}
+.ground-bath{overflow:hidden;}
