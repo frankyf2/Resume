@@ -18,6 +18,7 @@
     if (!toggle || !menu) return;
     function set(open) {
       menu.classList.toggle('open', open);
+      root.style.overflow = open ? 'hidden' : '';
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
     }
@@ -31,7 +32,7 @@
   })();
 
   /* ---- console easter egg ---- */
-  console.log('%cpoking around, are we?', 'font-family:monospace; font-size:14px; color:#4ECDC4; font-weight:bold;');
+  console.log('%cpoking around, are we?', 'font-family:monospace; font-size:14px; color:#F4AA3A; font-weight:bold;');
   console.log(
     '%cthis whole site is one static repo: HTML, CSS and a bit of JS. no framework, no build step.\nif you found something broken, that\'s on me: abdullahharun96@gmail.com',
     'font-family:monospace; font-size:12px; color:#ACA3B8;'
@@ -64,11 +65,11 @@
         if (pos === seq.length) {
           pos = 0;
           showToast('achievement unlocked: you remembered the Konami code', 3500);
-          root.style.setProperty('--coral', '#FFD54F');
-          root.style.setProperty('--coral-fill', '#FFD54F');
+          root.style.setProperty('--saffron-fill', '#7CE0C3');
+          root.style.setProperty('--madder-fill', '#5B8CFF');
           setTimeout(function () {
-            root.style.removeProperty('--coral');
-            root.style.removeProperty('--coral-fill');
+            root.style.removeProperty('--saffron-fill');
+            root.style.removeProperty('--madder-fill');
           }, 4000);
         }
       } else {
@@ -98,7 +99,7 @@
         btn.setAttribute('title', 'Switch to ' + next + ' theme');
       }
       for (var i = 0; i < metaColor.length; i++) {
-        metaColor[i].setAttribute('content', theme === 'light' ? '#FAF7F2' : '#14121A');
+        metaColor[i].setAttribute('content', theme === 'light' ? '#F3EDE1' : '#0D1431');
         metaColor[i].removeAttribute('media');
       }
       giscusFrameTheme(theme);
@@ -108,7 +109,15 @@
     if (btn) {
       btn.addEventListener('click', function () {
         var next = current() === 'light' ? 'dark' : 'light';
-        apply(next);
+        var go = function () { apply(next); };
+        if (document.startViewTransition && !reduceMotion) {
+          var r = btn.getBoundingClientRect();
+          root.style.setProperty('--vx', (r.left + r.width / 2) + 'px');
+          root.style.setProperty('--vy', (r.top + r.height / 2) + 'px');
+          root.classList.add('vt-theme');
+          var vt = document.startViewTransition(go);
+          vt.finished.finally(function () { root.classList.remove('vt-theme'); });
+        } else go();
         try { localStorage.setItem('theme', next); } catch (e) {}
       });
     }
@@ -350,9 +359,9 @@
     function draw() {
       ctx.fillStyle = css('--surface', '#1E1B27');
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = css('--coral-fill', '#FF6B5B');
+      ctx.fillStyle = css('--madder-fill', '#E0563F');
       ctx.fillRect(food.x * size + 2, food.y * size + 2, size - 4, size - 4);
-      ctx.fillStyle = css('--teal-fill', '#4ECDC4');
+      ctx.fillStyle = css('--saffron-fill', '#F4AA3A');
       snake.forEach(function (s, i) {
         ctx.globalAlpha = i === 0 ? 1 : 0.75;
         ctx.fillRect(s.x * size + 1, s.y * size + 1, size - 2, size - 2);
