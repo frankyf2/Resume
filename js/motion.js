@@ -163,6 +163,7 @@
     var ring = document.createElement('div'); ring.className = 'iris-ring'; ring.setAttribute('aria-hidden', 'true');
     sec.appendChild(cover); sec.appendChild(ring);
     sec.classList.add('iris-on');
+    var wrap = sec.querySelector(':scope > .wrap');
     var queued = false, done = false;
     function upd() {
       queued = false;
@@ -172,11 +173,16 @@
       var v0 = Math.max(0, r.top), v1 = Math.min(vh, r.bottom);
       var cx = r.width / 2, cy = (v0 - r.top) + Math.max(0, v1 - v0) / 2;
       var R = Math.hypot(Math.max(cx, r.width - cx), Math.max(cy, r.height - cy)) + 2;
-      sec.style.setProperty('--cx', cx.toFixed(1) + 'px');
-      sec.style.setProperty('--cy', cy.toFixed(1) + 'px');
-      sec.style.setProperty('--r', (t * R).toFixed(1) + 'px');
-      sec.style.setProperty('--ro', (1 - Math.max(0, (t - 0.85) / 0.15)).toFixed(3));
-      sec.style.setProperty('--wo', Math.max(0, Math.min(1, (t - 0.15) / 0.45)).toFixed(3));
+      // write only to the two leaf layers (and the wrap's own opacity), never to the section:
+      // a custom property set on the section would restyle every descendant on each scroll frame
+      var rad = t * R;
+      cover.style.setProperty('--iris-x', cx.toFixed(1) + 'px');
+      cover.style.setProperty('--iris-y', cy.toFixed(1) + 'px');
+      cover.style.setProperty('--iris-r', rad.toFixed(1) + 'px');
+      ring.style.transform = 'translate(' + (cx - rad).toFixed(1) + 'px,' + (cy - rad).toFixed(1) + 'px)';
+      ring.style.width = ring.style.height = (2 * rad).toFixed(1) + 'px';
+      ring.style.opacity = (1 - Math.max(0, (t - 0.85) / 0.15)).toFixed(3);
+      if (wrap) wrap.style.opacity = Math.max(0, Math.min(1, (t - 0.15) / 0.45)).toFixed(3);
       var d = t >= 0.999;
       if (d !== done) { done = d; sec.classList.toggle('iris-done', d); }
     }
