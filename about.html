@@ -7,7 +7,7 @@
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0D1431">
 <title>About — Dol</title>
-<meta name="description" content="About Dol — full-stack developer at Puncak Nilam Management Services Sdn. Bhd. (PNMS), working in Blazor Server, .NET, Python, and PHP.">
+<meta name="description" content="About Dol — full-stack Blazor &amp; .NET developer at Puncak Nilam Management Services Sdn. Bhd. (PNMS): projects, technical skills, timeline and certificates.">
 <meta property="og:title" content="About — Dol">
 <meta property="og:description" content="Full-stack developer who designs, builds and maintains the MIRAR and Puncak Nilam websites, plus a handful of personal tools.">
 <meta property="og:image" content="img/profile.jpg">
@@ -54,17 +54,19 @@
     </div>
     </div>
     <div class="about">
-      <p>I'm a full-stack developer working mostly in <strong>Blazor Server and .NET</strong>, based at <strong>Puncak Nilam Management Services Sdn. Bhd. (PNMS)</strong>. <strong>MIRAR</strong> is a separate company under the same management. For both, I design, build and maintain the websites: I redesigned each public site and built every admin system behind them, from MIRAR's certificate, quiz and survey engines to PNMS's enquiry, services and insights tools.</p>
-      <p>Outside client work I build things I actually want to use — <strong>iSusun</strong> because I got tired of paywalled Kanban features, <strong>star8892</strong> as a full social platform for an alumni community, and <strong>Autumn Twilight</strong> because I wanted a proper web home for a text-based world.</p>
-      <p>I like systems that hold up under real use: consistent service-layer patterns, admin tools that don't fight the people using them, and code that's still readable after the third feature request changes the plan.</p>
-      <p>Standard stack across most of this: <strong>Blazor Server (.NET)</strong>, MariaDB/MySQL with Entity Framework Core, hosted on Plesk and reverse-proxied through Cloudflare Workers. I also work with Python, Flask, PHP, and plain HTML depending on what a project calls for.</p>
+      <p>I'm a full-stack developer working mostly in <strong>Blazor Server and .NET</strong>, based at <strong>Puncak Nilam Management Services Sdn. Bhd. (PNMS)</strong>. <strong>MIRAR</strong> is a separate company under the same management. My manager hands me the projects and shares ideas along the way; the design, the code, the hosting and the upkeep are mine.</p>
+      <p>For <strong>PNMS</strong> and <strong>MIRAR</strong> I moved both companies off their old PHP sites on cPanel and rebuilt them in Blazor, public site and every admin system behind it: certificates, attendance, quizzes, surveys and an expert directory for MIRAR; services, insights, a PDPA readiness check and enquiries for PNMS.</p>
+      <p>I also built <strong>iSeliaIntel</strong>, the backend that collects news, regulatory updates and market data and feeds it to <strong>iSelia</strong> (a GRC platform I build with my manager, where the front panel and PDF tools are mine) and to MIRAR. Then there are three full builds: <strong>CareVentis</strong>, a heritage-therapy clinic with online booking; <strong>star8892</strong>, a private social network for STAR Ipoh's 1988&ndash;1992 batch; and <strong>Autumn Twilight</strong>, a web home for a Dragonlance text world inspired by the classic game. All of it is still in active development.</p>
+      <p>I like systems that hold up under real use: consistent service-layer patterns, admin tools that don't fight the people using them, audit logs and outboxes so nothing goes missing quietly, and code that's still readable after the third feature request changes the plan.</p>
+      <p>Standard stack across most of this: <strong>Blazor Server (.NET)</strong> with MudBlazor, MariaDB/MySQL with Entity Framework Core, hosted on Plesk at iWHost, behind Cloudflare, deployed from GitHub. I also work with Python, Flask, PHP and plain HTML when a project calls for it.</p>
     </div>
     <aside class="now">
       <h2>Currently</h2>
       <ul class="ticks">
-        <li>Building out iSeliaIntel's regulatory scraper coverage</li>
-        <li>Extending MIRAR's survey engine (bank → instrument → session)</li>
-        <li>Shipping features for Autumn Twilight</li>
+        <li>Rolling out MIRAR's Expert Network</li>
+        <li>Building CareVentis's booking and admin</li>
+        <li>Making iSeliaIntel's feeds faster for iSelia and MIRAR</li>
+        <li>Shipping features for star8892 and Autumn Twilight</li>
       </ul>
       <p class="now-note">Now building: this portfolio, recursively</p>
     </aside>
@@ -83,6 +85,71 @@
   </div>
 </section>
 
+<section class="pad-top-0" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>What I work with.</h2>
+      <p class="section-count">All of it used in the projects above.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Languages and frameworks</h3><p class="module-sum">The day-to-day.</p></div>
+          <ul class="ticks">
+            <li>C# and .NET 8&ndash;9: Blazor Server and Blazor Web Apps (static server rendering plus interactive pages), ASP.NET Core APIs and minimal endpoints, SignalR</li>
+            <li>MudBlazor 9, including custom brand themes and upgrades from older versions</li>
+            <li>HTML, CSS and vanilla JavaScript, including a rich-text editor and a draw.io-style flowchart editor with no libraries</li>
+            <li>Python and Flask, PHP</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Data</h3><p class="module-sum">Where it all lives.</p></div>
+          <ul class="ticks">
+            <li>MariaDB and MySQL with Entity Framework Core (Pomelo), DbContext factories, migrations and hand-written SQL scripts</li>
+            <li>In-memory caching with stampede protection and refresh-in-place</li>
+            <li>Background workers for scheduled jobs: snapshots, reminders, retention and email retries</li>
+            <li>Excel, CSV and PDF exports</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Documents, feeds and integrations</h3><p class="module-sum">Talking to everything else.</p></div>
+          <ul class="ticks">
+            <li>PDFs with QuestPDF and PdfSharpCore, Excel with ClosedXML, QR codes with QRCoder, images with SkiaSharp</li>
+            <li>Email with MailKit over SMTP, through an outbox with retries and leases</li>
+            <li>RSS and Atom ingestion, HTML scraping with HtmlAgilityPack, and market data APIs (Finnhub, Alpha Vantage, ExchangeRate-API, Yahoo Finance)</li>
+            <li>Calendar invites (.ics and Google Calendar), Cloudflare Turnstile, sitemaps and schema.org structured data</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Security and privacy</h3><p class="module-sum">Because these sites hold real people's data.</p></div>
+          <ul class="ticks">
+            <li>BCrypt passwords, lockouts, two-step sign-in by emailed code, step-up re-authentication and session re-checks on open Blazor pages</li>
+            <li>Rate limiting, honeypots and form timing, Content-Security-Policy and security headers, signed short-lived links</li>
+            <li>Insert-only audit logs with alerts and archiving</li>
+            <li>PDPA-minded design: consent records, retention and anonymisation jobs, data export and erase</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Hosting and infrastructure</h3><p class="module-sum">From domain to running site.</p></div>
+          <ul class="ticks">
+            <li>iWHost Plesk hosting on Windows and IIS: app pools, web.config, ASP.NET Core hosting fixes</li>
+            <li>Cloudflare DNS for every domain, including SPF, DKIM, DMARC and MX records for email deliverability</li>
+            <li>Cloudflare Workers as a reverse proxy in front of each site, forwarding the real visitor IP and country with a shared secret</li>
+            <li>GitHub Actions push-to-deploy to Plesk with Web Deploy and a post-deploy health check; Docker; Git</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>How I work</h3><p class="module-sum">The habits behind the code.</p></div>
+          <ul class="ticks">
+            <li>Every admin system gets the same backbone: dashboard, audit log, visitor analytics, email outbox and exports</li>
+            <li>Track every useful bit of context: IP, country, device, referrer and campaign on visits and submissions</li>
+            <li>Design for failure: empty states instead of errors, fallbacks when the database or an API is down</li>
+            <li>Turn a short brief into a shipped, maintained feature, and suggest improvements along the way</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
 <section class="pad-top-0">
   <div class="wrap">
     <div class="section-head">
@@ -91,19 +158,19 @@
     <ol class="timeline">
       <li class="tl-item">
         <div class="tl-when">2025</div>
-        <div class="tl-what"><strong>Joined PNMS</strong> — started building on MIRAR's Blazor platform.</div>
+        <div class="tl-what"><strong>Joined PNMS</strong> — started rebuilding MIRAR's old PHP site in Blazor.</div>
       </li>
       <li class="tl-item">
         <div class="tl-when">2025</div>
-        <div class="tl-what"><strong>iSusun</strong> and <strong>star8892</strong> kicked off as personal projects.</div>
+        <div class="tl-what"><strong>star8892</strong> begins, and <strong>iSusun</strong> starts as my customised version of Ticky.</div>
       </li>
       <li class="tl-item">
         <div class="tl-when">2026</div>
-        <div class="tl-what"><strong>iSeliaIntel</strong> takes shape (rebranded from Vectris Intel).</div>
+        <div class="tl-what"><strong>iSeliaIntel</strong> takes shape (rebranded from Vectris Intel) and starts feeding <strong>iSelia</strong> and MIRAR.</div>
       </li>
       <li class="tl-item">
         <div class="tl-when">2026</div>
-        <div class="tl-what"><strong>Autumn Twilight</strong> begins — still ongoing.</div>
+        <div class="tl-what"><strong>CareVentis</strong> and <strong>Autumn Twilight</strong> begin, and MIRAR's Expert Network goes into build. Everything still in active development.</div>
       </li>
     </ol>
   </div>

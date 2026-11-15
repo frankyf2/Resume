@@ -7,9 +7,9 @@
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0D1431">
 <title>iSeliaIntel — Dol</title>
-<meta name="description" content="Risk intelligence platform tracking regulatory activity across Malaysian financial regulators.">
+<meta name="description" content="iSeliaIntel is the backend I built behind iSelia and MIRAR: RSS and scraper ingestion, tagging, risk scoring, market data and a JSON API.">
 <meta property="og:title" content="iSeliaIntel — Dol">
-<meta property="og:description" content="Risk intelligence platform tracking regulatory activity across Malaysian financial regulators.">
+<meta property="og:description" content="iSeliaIntel is the backend I built behind iSelia and MIRAR: RSS and scraper ingestion, tagging, risk scoring, market data and a JSON API.">
 <meta property="og:image" content="../img/profile.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -42,33 +42,159 @@
 <section class="page-head" data-enter>
   <div class="wrap">
     <h1 class="page-title" data-split>iSeliaIntel</h1>
-    <dl class="facts">
-      <div class="fact"><dt>Context</dt><dd>Client platform</dd></div>
-      <div class="fact"><dt>Stack</dt><dd>Blazor Server · MySQL · Background workers</dd></div>
+    <dl class="facts facts-4">
+      <div class="fact"><dt>What it is</dt><dd>The intelligence backend behind iSelia and MIRAR (formerly Vectris Intel)</dd></div>
+      <div class="fact"><dt>My role</dt><dd>Design, build and maintenance</dd></div>
+      <div class="fact"><dt>Status</dt><dd>In development</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>ASP.NET Core · Blazor Server · MudBlazor · EF Core · MariaDB · background workers</dd></div>
     </dl>
+    <p class="case-lead mp-lead">iSeliaIntel collects news and regulatory updates from RSS feeds and websites, tags and groups them, scores risk across domains, gathers market data, and serves all of it through one JSON API. iSelia's front panel and MIRAR's Daily Brief both read from it. Staff run it from a set of ops screens, so adding a new source or a new calendar column is a form, not a deploy.</p>
+    <div class="figures">
+      <div class="figure"><span class="figure-num">34</span><span class="figure-label">API endpoints</span></div>
+      <div class="figure"><span class="figure-num">20</span><span class="figure-label">data models</span></div>
+      <div class="figure"><span class="figure-num">2</span><span class="figure-label">risk snapshots a day</span></div>
+    </div>
+    <nav class="jump" aria-label="On this page">
+      <a href="#pipeline">The pipeline</a>
+      <a href="#ops">The ops screens</a>
+      <a href="#engineering">Under the hood</a>
+    </nav>
   </div>
 </section>
 
-<section class="pad-top-20">
-  <div class="wrap case">
-    <p class="case-lead">A risk intelligence platform tracking regulatory activity across Malaysian financial regulators — BNM, SC, Bursa Malaysia, SSM, LHDN and more. Automated risk-score snapshots run twice daily, trend dashboards visualize movement over time, and a regulatory scraper is fully admin-configurable, so a new source can be added through the UI without a code deploy.</p>
-    <ul class="features">
-        <li>Twice-daily automated risk-score snapshots</li>
-        <li>Admin-configurable scraper, no-code new sources</li>
-        <li>Blazor intelligence dashboard with time-of-day panels</li>
-    </ul>
+<section class="mp-section" id="pipeline">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>The pipeline</h2>
+      <p class="mp-intro">One background worker runs the whole cycle, in order, so each step works on fresh data from the step before.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Ingestion</h3><p class="module-sum">RSS, Atom and websites.</p></div>
+          <ul class="ticks">
+            <li>RSS and Atom feeds parsed into one common entry format, with images pulled out of each item</li>
+            <li>Duplicates dropped using SHA-256 fingerprints, checked in memory against everything already stored</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>One scraper for every regulator</h3><p class="module-sum">New sources without new code.</p></div>
+          <ul class="ticks">
+            <li>A single generic HTML scraper for any page that is a list of date, title and link, such as press releases and notices</li>
+            <li>Selectors are stored per source as JSON and edited in Scraper Ops, so adding a site is a new row, not a deploy</li>
+            <li>This is what scrapes regulatory sources for both MIRAR and iSelia</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Tagging and compliance</h3><p class="module-sum">Turning headlines into signals.</p></div>
+          <ul class="ticks">
+            <li>A rule engine tags each item (for example Cybersecurity, GeoRisk, Market) with an importance score</li>
+            <li>Items are mapped to compliance standards and their controls</li>
+            <li>Related stories are grouped by comparing normalised titles</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Risk scoring</h3><p class="module-sum">From tags to an index.</p></div>
+          <ul class="ticks">
+            <li>Tags map to risk domains with weights; recent risk items add weighted signals to each domain and to a composite risk index</li>
+            <li>Snapshots at 09:00 and 18:00 Malaysia time, one per slot, so a manual re-run never creates duplicates</li>
+            <li>A history endpoint that powers the trend charts on iSelia</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Calendar events</h3><p class="module-sum">What matters today.</p></div>
+          <ul class="ticks">
+            <li>Today's tagged items are promoted to calendar events by rule: always-promote tags, Risk and Compliance sources, or a high enough importance score</li>
+            <li>Calendar columns come from a mapping table, so a new column is one row</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Market data</h3><p class="module-sum">Indices, futures and FX.</p></div>
+          <ul class="ticks">
+            <li>Pulled every few minutes from Finnhub, Alpha Vantage, ExchangeRate-API and Yahoo Finance, plus intraday series</li>
+            <li>Works around Yahoo's quirks: a cookie and crumb handshake, futures and regular symbols fetched separately, and a fallback endpoint for any symbol that comes back empty</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Lifecycle</h3><p class="module-sum">Keeping the store tidy.</p></div>
+          <ul class="ticks">
+            <li>Old items cleaned up each cycle, then the shared cache refreshed</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="ops">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>The ops screens</h2>
+      <p class="mp-intro">A small Blazor admin for the people who run it.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Sources</h3><p class="module-sum">What gets collected.</p></div>
+          <ul class="ticks">
+            <li>Feed Ops for RSS sources, Scraper Ops for scraped sites, Market Ops for market symbols and providers</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Rules and scores</h3><p class="module-sum">How it's interpreted.</p></div>
+          <ul class="ticks">
+            <li>Risk Keywords for tagging rules, Risk Ops with the trend chart, Compliance Ops for standards and controls, Event Ops for the calendar</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Reading views</h3><p class="module-sum">Checking the output.</p></div>
+          <ul class="ticks">
+            <li>News and intelligence views, and a market page, so staff can see exactly what the sites will show</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="engineering">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>Under the hood</h2>
+      <p class="mp-intro">Most of the work here is making it fast and making it actually run.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Performance</h3><p class="module-sum">Why the feeds got quicker.</p></div>
+          <ul class="ticks">
+            <li>A single shared cache in front of every read, used by iSelia, MIRAR and the admin pages alike</li>
+            <li>The cache is now refreshed in place instead of being cleared and left for the next visitor to rebuild</li>
+            <li>Tagging rules, tags and compliance controls are loaded once per cycle instead of once per item, which removed thousands of database round-trips</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Fixes that mattered</h3><p class="module-sum">Things that were quietly broken.</p></div>
+          <ul class="ticks">
+            <li>Scraped sources were being parsed as RSS, failing silently every cycle; the scraper now actually runs in production</li>
+            <li>Every service moved to the same DbContext factory pattern</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>API</h3><p class="module-sum">One contract for two sites.</p></div>
+          <ul class="ticks">
+            <li>34 endpoints for news, intelligence by tag, market data, risk scores and history, calendar events and their mappings</li>
+            <li>Seed endpoints to set up the domain and calendar mappings on a fresh database</li>
+          </ul>
+        </div>
+    </div>
   </div>
 </section>
 
 <section class="pad-top-0">
   <div class="wrap">
     <nav class="next-up" aria-label="More projects">
-      <a class="next-link" data-cursor="Next" href="isusun.html">
-        <span><span class="next-label">Next project</span><span class="next-name">iSusun</span></span>
+      <a class="next-link" data-cursor="Next" href="careventis.html">
+        <span><span class="next-label">Next project</span><span class="next-name">CareVentis</span></span>
         <svg class="project-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <div class="next-sub">
-        <a href="pnms.html">&larr; Puncak Nilam (PNMS)</a>
+        <a href="iselia.html">&larr; iSelia</a>
         <a href="../work.html">All work</a>
       </div>
     </nav>

@@ -7,9 +7,9 @@
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0D1431">
 <title>Puncak Nilam (PNMS) — Dol</title>
-<meta name="description" content="Designed, built and maintain the Puncak Nilam website: redesigned the public site in Blazor and built the entire admin system for services, insights, resources, enquiries and audit logging.">
+<meta name="description" content="Puncak Nilam (PNMS): I moved the old PHP site to Blazor and built the entire admin system: services, insights, a PDPA readiness check, enquiries, comments, visitor analytics and audit logging.">
 <meta property="og:title" content="Puncak Nilam (PNMS) — Dol">
-<meta property="og:description" content="Designed, built and maintain the Puncak Nilam website: redesigned the public site in Blazor and built the entire admin system for services, insights, resources, enquiries and audit logging.">
+<meta property="og:description" content="Puncak Nilam (PNMS): I moved the old PHP site to Blazor and built the entire admin system: services, insights, a PDPA readiness check, enquiries, comments, visitor analytics and audit logging.">
 <meta property="og:image" content="../img/profile.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -44,15 +44,15 @@
     <h1 class="page-title" data-split>Puncak Nilam (PNMS)</h1>
     <dl class="facts facts-4">
       <div class="fact"><dt>Company</dt><dd>Puncak Nilam Management Services Sdn. Bhd., a governance, risk and compliance consultancy</dd></div>
-      <div class="fact"><dt>My role</dt><dd>Design, build and maintenance: the redesigned website and the entire admin system</dd></div>
-      <div class="fact"><dt>Status</dt><dd>Live, maintained by me</dd></div>
+      <div class="fact"><dt>My role</dt><dd>All of the design and build: the redesigned website and the entire admin system. The brief and some of the ideas came from my manager; I maintain it</dd></div>
+      <div class="fact"><dt>Status</dt><dd>In active development</dd></div>
       <div class="fact"><dt>Stack</dt><dd>Blazor Web App (.NET 8) · MariaDB/MySQL · EF Core · Cloudflare Workers</dd></div>
     </dl>
-    <p class="case-lead mp-lead">Puncak Nilam Management Services (PNMS) is a governance, risk and compliance consultancy established in 2016. I redesigned its website from the previous PHP site, rebuilt it in Blazor, and built the whole admin system behind it, so staff manage services, articles, downloads and enquiries themselves. I design, build and maintain all of it.</p>
+    <p class="case-lead mp-lead">Puncak Nilam Management Services (PNMS) is a governance, risk and compliance consultancy established in 2016. I redesigned its website, moved it from the old PHP site on cPanel to Blazor, and built the whole admin system behind it, so staff manage services, articles, downloads, comments, announcements and enquiries themselves. I design, build and maintain all of it.</p>
     <div class="figures">
-      <div class="figure"><span class="figure-num">12</span><span class="figure-label">admin routes</span></div>
-      <div class="figure"><span class="figure-num">5</span><span class="figure-label">service landing pages</span></div>
-      <div class="figure"><span class="figure-num">7</span><span class="figure-label">data models</span></div>
+      <div class="figure"><span class="figure-num">19</span><span class="figure-label">admin routes</span></div>
+      <div class="figure"><span class="figure-num">14</span><span class="figure-label">service landing pages</span></div>
+      <div class="figure"><span class="figure-num">18</span><span class="figure-label">data tables</span></div>
     </div>
     <nav class="jump" aria-label="On this page">
       <a href="#public">The public website</a>
@@ -75,7 +75,8 @@
             <li>Sticky header that changes on scroll, with a services mega-menu linking straight to every service and landing page</li>
             <li>Mobile hamburger menu that closes on Escape or an outside tap, and resets itself when the window is resized</li>
             <li>Scroll-triggered reveal animations and responsive layouts for phones and tablets</li>
-            <li>Home, About, Services, ERM Software, Resources, Insights and Contact pages</li>
+            <li>Home, About, Services, ERM Software, Resources, Insights and Contact pages, plus Privacy (in English and Malay) and Terms</li>
+            <li>A scheduled announcement band on the home page, managed from the admin</li>
           </ul>
         </div>
         <div class="module">
@@ -83,7 +84,8 @@
           <ul class="ticks">
             <li>One Services page built from the database: each service has a label, title, description, icon, image and checklist, and its order sets the alternating light and dark layout</li>
             <li>11 service lines, from starting a company and ISO 31000 risk management to anti-bribery, business continuity, data and AI, and Halal compliance support</li>
-            <li>Dedicated landing pages for ISO 27001, PDPA, Cyber Security and ISMS, Assurance and Internal Audit, and Cybersecurity Audit, each with an embedded enquiry form</li>
+            <li>Dedicated landing pages for ISO 27001, PDPA, Cyber Security and ISMS, Assurance and Internal Audit, Cybersecurity Audit and Business Continuity, each with an embedded enquiry form</li>
+            <li>Eight Business Continuity sub-pages: business impact analysis, gap and maturity assessments, BCMS implementation, continuity risk assessment, departmental plans, exercises and continual improvement</li>
             <li>An ERM software page with a demo request</li>
           </ul>
         </div>
@@ -92,6 +94,8 @@
           <ul class="ticks">
             <li>Article list with a category filter (ISO and Certification, Compliance, Risk, Cyber, Anti-Bribery) and article pages with a Keep Reading section</li>
             <li>Topic tags that surface relevant articles on the matching service pages</li>
+            <li>Reader comments, published straight away unless they trip the spam checks, with email notifications and a one-click unsubscribe</li>
+            <li>A public article submission form; submissions wait for admin approval</li>
             <li>Article schema markup plus canonical and Open Graph tags on every article</li>
           </ul>
         </div>
@@ -100,6 +104,13 @@
           <ul class="ticks">
             <li>Brochures and case studies viewable in the page: PDFs inline, PowerPoint through the Office viewer</li>
             <li>Category filter, featured items pinned to the top, and a tracked download link that counts real downloads rather than page views</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>PDPA readiness check</h3><p class="module-sum">A free self-assessment that starts conversations.</p></div>
+          <ul class="ticks">
+            <li>15 questions on the Personal Data Protection Act 2010 and its 2024 amendment, with a result at the end</li>
+            <li>Questions are edited in the admin; if those tables are missing or the database is down, the check falls back to the built-in questions so the page never breaks</li>
           </ul>
         </div>
         <div class="module">
@@ -126,7 +137,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2 data-split>The admin system</h2>
-      <p class="mp-intro">I built all of it: 12 routes, each behind its own sign-in guard. A sidebar badge counts unread enquiries, and every change is written to an audit log.</p>
+      <p class="mp-intro">I built all of it: 19 routes, each behind its own sign-in guard. Sidebar badges count unread enquiries, new comments and pending submissions, and every change is written to an audit log.</p>
     </div>
     <div class="modules">
         <div class="module">
@@ -146,6 +157,7 @@
             <li>Captured visitor details: IP and country, hostname, browser and referrer</li>
             <li>Email delivery status with the failure reason and a Retry Send button, so a bounced notification never loses an enquiry</li>
             <li>Delete with confirmation, and export to CSV</li>
+            <li>Personal details erased automatically after the retention period (24 months by default) to meet PDPA storage limits, keeping only date, service and status so totals stay right</li>
           </ul>
         </div>
         <div class="module">
@@ -162,6 +174,7 @@
           <ul class="ticks">
             <li>Article editor with a slug (cleaned automatically), category, excerpt, HTML body, image and topics</li>
             <li>SEO title and description, publish date, and a Live or Draft switch with a link to view the live article</li>
+            <li>Approve or reject articles submitted by the public</li>
           </ul>
         </div>
         <div class="module">
@@ -173,9 +186,30 @@
           </ul>
         </div>
         <div class="module">
+          <div class="module-head"><h3>Comments and block list</h3><p class="module-sum">Keeping the discussion clean.</p></div>
+          <ul class="ticks">
+            <li>Approve or delete comments held for flagged words</li>
+            <li>Block list of emails, whole email domains and IP addresses, checked from memory so a new comment costs no extra query</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Assessments and announcements</h3><p class="module-sum">Content that changes often.</p></div>
+          <ul class="ticks">
+            <li>Edit the PDPA check's sections and questions, and see the responses</li>
+            <li>Schedule announcement-band messages with a start and end time</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Visitors and email</h3><p class="module-sum">What the site saw and sent.</p></div>
+          <ul class="ticks">
+            <li>Visitor log: IP, country, city and network; browser, OS, device and language; referrer, UTM campaign and ad click id; downloads, form posts, 404s and scanner probes; response time, time on page, scroll depth and screen size</li>
+            <li>Email outbox (super admin only): read, retry or cancel any email the site sent</li>
+          </ul>
+        </div>
+        <div class="module">
           <div class="module-head"><h3>Admin users</h3><p class="module-sum">Who can sign in.</p></div>
           <ul class="ticks">
-            <li>Add admins, edit their email, and set another admin's password</li>
+            <li>Add admins, edit their email, set another admin's password, and turn two-step sign-in on or off per admin</li>
             <li>Disable or re-enable an account</li>
           </ul>
         </div>
@@ -198,7 +232,7 @@
           <ul class="ticks">
             <li>Slide-over drawers and confirmation dialogs that move focus inside when they open and close on Escape</li>
             <li>A &ldquo;Still there?&rdquo; warning before an idle session is signed out</li>
-            <li>A My Account page for changing your own password</li>
+            <li>A My Account page for changing your own password and your two-step sign-in setting</li>
           </ul>
         </div>
     </div>
@@ -216,9 +250,18 @@
           <div class="module-head"><h3>Security</h3><p class="module-sum">Sign-in, sessions and password resets.</p></div>
           <ul class="ticks">
             <li>Passwords hashed with BCrypt, and a lockout after five failed attempts, tracked per IP and username</li>
+            <li>Two-step sign-in with an emailed one-time code, on by default, and one password policy for every place a password is set</li>
             <li>Sessions that expire, plus an inactivity timeout with a sliding window driven by an activity tracker in the browser</li>
             <li>Self-service forgot-password: single-use links that expire after 30 minutes, with only a hash stored, the same response whether or not the account exists, and rate limiting per hour</li>
             <li>Every admin page checks sign-in before it loads any data</li>
+            <li>Alert emails for bursts of failed sign-ins and for high-impact actions such as a new admin, a role change or two-step sign-in being turned off</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Spam without CAPTCHAs in your face</h3><p class="module-sum">Invisible checks first.</p></div>
+          <ul class="ticks">
+            <li>Honeypot fields, a tamper-proof timestamp that catches forms filled in too fast, and narrow content checks; a hit looks successful to the bot and stores nothing</li>
+            <li>HTML from comments and articles cleaned with an HTML sanitiser</li>
           </ul>
         </div>
         <div class="module">
@@ -233,13 +276,14 @@
           <ul class="ticks">
             <li>Startup seeding is wrapped so an unreachable database cannot stop the site from starting</li>
             <li>The Services and Insights pages show an empty state, and the sitemap falls back to static pages, when the database is down</li>
+            <li>If the database refuses an audit entry, it is written to a local file and replayed later with its original time and IP, so nothing is lost</li>
           </ul>
         </div>
         <div class="module">
           <div class="module-head"><h3>Data and email</h3><p class="module-sum">The plumbing.</p></div>
           <ul class="ticks">
-            <li>EF Core on MariaDB/MySQL with migrations across seven tables, and an in-memory cache for services</li>
-            <li>The document catalogue lives in a JSON manifest with an in-memory cache and a write lock, so it needs no table</li>
+            <li>EF Core on MariaDB/MySQL across 18 tables, with in-memory caches for services, announcements and the block list</li>
+            <li>The document catalogue lives in a JSON manifest with a write lock; files sit outside the public folder and are served only through a counted download link or a signed link that expires after an hour</li>
             <li>SignalR message limit raised to 30 MB so 25 MB uploads work on the Blazor circuit</li>
             <li>Table-based HTML emails with inline styles and an inline logo, built to survive email clients that strip CSS: enquiry notification, customer auto-reply, password reset and a test email</li>
           </ul>
@@ -251,8 +295,8 @@
 <section class="pad-top-0">
   <div class="wrap">
     <nav class="next-up" aria-label="More projects">
-      <a class="next-link" data-cursor="Next" href="iseliaintel.html">
-        <span><span class="next-label">Next project</span><span class="next-name">iSeliaIntel</span></span>
+      <a class="next-link" data-cursor="Next" href="iselia.html">
+        <span><span class="next-label">Next project</span><span class="next-name">iSelia</span></span>
         <svg class="project-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <div class="next-sub">

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="UTF-8">
+<script>(function(){var h=document.documentElement,t=null;try{t=localStorage.getItem('theme');}catch(e){}if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}h.setAttribute('data-theme',t);h.classList.add('js','mo-js');var s=null;try{s=sessionStorage.getItem('dol-seen');sessionStorage.setItem('dol-seen','1');}catch(e){s='1';}if(!s&&!matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('curtain-on');setTimeout(function(){if(!window.__motion)h.classList.add('st-safe');},2500);})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0D1431">
+<title>CareVentis — Dol</title>
+<meta name="description" content="CareVentis is a heritage-therapy clinic website I designed and built: traditions, a knowledge library, online booking with calendar invites, and a full admin system.">
+<meta property="og:title" content="CareVentis — Dol">
+<meta property="og:description" content="CareVentis is a heritage-therapy clinic website I designed and built: traditions, a knowledge library, online booking with calendar invites, and a full admin system.">
+<meta property="og:image" content="../img/profile.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preload" href="../fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="curtain" aria-hidden="true"><div class="curtain-mark"><span style="--i:0">D</span><span style="--i:1">o</span><span style="--i:2">l</span><span class="dot" style="--i:3">.</span></div></div>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Dol, home"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><g fill="currentColor"><ellipse cx="20" cy="9" rx="5" ry="8"/><ellipse cx="20" cy="31" rx="5" ry="8"/><ellipse cx="9" cy="20" rx="8" ry="5"/><ellipse cx="31" cy="20" rx="8" ry="5"/></g></svg>Dol<span>.</span></a>
+    <div class="nav-right">
+      <nav aria-label="Primary"><ul id="site-menu">
+        <li style="--i:0"><a href="../index.html">Home</a></li>
+        <li style="--i:1"><a href="../work.html" aria-current="page">Work</a></li>
+        <li style="--i:2"><a href="../about.html">About</a></li>
+        <li style="--i:3"><a href="../contact.html">Contact</a></li>
+      </ul></nav>
+      <button class="icon-btn" id="palette-btn" type="button" aria-label="Search pages and projects" aria-keyshortcuts="/" title="Search (press /)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button>
+      <button class="icon-btn" id="theme-btn" type="button" aria-label="Switch theme" title="Switch theme"><svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg></button>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu"><svg class="icon-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="page-head" data-enter>
+  <div class="wrap">
+    <h1 class="page-title" data-split>CareVentis</h1>
+    <dl class="facts facts-4">
+      <div class="fact"><dt>Business</dt><dd>CareVentis, a clinic for traditional Malay healing practices</dd></div>
+      <div class="fact"><dt>My role</dt><dd>Everything: design, build and maintenance. The idea and brief came from my manager</dd></div>
+      <div class="fact"><dt>Status</dt><dd>In development</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>Blazor (.NET 9) · MudBlazor 9 · EF Core · MariaDB · MailKit · Cloudflare Turnstile</dd></div>
+    </dl>
+    <p class="case-lead mp-lead">CareVentis documents and offers traditional Malay healing: urut tradisional, terapi tarik bisa and urutan pembetulan tulang. The site explains each tradition and the circumstances people come in with, keeps a knowledge library, and lets people book an appointment online. My manager came up with the idea; I designed and built all of it, the public site and the admin behind it.</p>
+    <div class="figures">
+      <div class="figure"><span class="figure-num">13</span><span class="figure-label">admin routes</span></div>
+      <div class="figure"><span class="figure-num">3</span><span class="figure-label">bookable services</span></div>
+      <div class="figure"><span class="figure-num">19</span><span class="figure-label">data tables</span></div>
+    </div>
+    <nav class="jump" aria-label="On this page">
+      <a href="#public">The public website</a>
+      <a href="#admin">The admin system</a>
+      <a href="#engineering">Under the hood</a>
+    </nav>
+  </div>
+</section>
+
+<section class="mp-section" id="public">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>The public website</h2>
+      <p class="mp-intro">Written for people who want to understand a practice before they book it.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Services and traditions</h3><p class="module-sum">What is offered, and where it comes from.</p></div>
+          <ul class="ticks">
+            <li>Services index with a page for each of the three therapies</li>
+            <li>Heritage Traditions and Health Circumstances, each with an index and detail pages</li>
+            <li>Home, About, FAQ, Contact, and Privacy, Terms and Disclaimer pages</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Knowledge</h3><p class="module-sum">A library, not just a blog.</p></div>
+          <ul class="ticks">
+            <li>Articles with categories, a Research Library, Resources and a Press page</li>
+            <li>A public &ldquo;share your story&rdquo; form, held for review and rate-limited</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Booking</h3><p class="module-sum">From picking a service to the reminder.</p></div>
+          <ul class="ticks">
+            <li>A month calendar per service showing which days are open, full or closed, built from one database query</li>
+            <li>Hourly slots with already-booked and past times removed, within a booking window set by staff</li>
+            <li>Confirmation email with an Add to Google Calendar link and a signed .ics file with a two-hour reminder</li>
+            <li>A Manage My Booking link to view, reschedule or cancel, and a reminder email the day before</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Member area</h3><p class="module-sum">One place for a returning client.</p></div>
+          <ul class="ticks">
+            <li>Register with an emailed verification code, sign in and reset a password</li>
+            <li>Dashboard with my appointments, inquiries, comments and stories</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="admin">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>The admin system</h2>
+      <p class="mp-intro">Built so the clinic can run bookings, content and the site itself without asking a developer.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Dashboard</h3><p class="module-sum">Today at a glance.</p></div>
+          <ul class="ticks">
+            <li>Next appointments, latest inquiries and charts</li>
+            <li>Loaded once in the background after each deploy, so the first admin visit isn't slow</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Appointments</h3><p class="module-sum">The clinic's diary.</p></div>
+          <ul class="ticks">
+            <li>Calendar by day or week, or a list</li>
+            <li>Mark as completed, or cancel a booking</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Inquiries</h3><p class="module-sum">Every message from the site.</p></div>
+          <ul class="ticks">
+            <li>Internal notes only admins can see</li>
+            <li>Reply templates for common answers</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Articles and comments</h3><p class="module-sum">Publishing with review.</p></div>
+          <ul class="ticks">
+            <li>Editor with slug, category, byline, excerpt, publish date and draft or live</li>
+            <li>SEO meta title and description that fall back to sensible defaults</li>
+            <li>Reject a public submission with a note that's emailed to the submitter; comment moderation</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Members</h3><p class="module-sum">Who has an account.</p></div>
+          <ul class="ticks">
+            <li>Members, admins and super admins; locked and deactivated accounts; last sign-in</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Emails, visits and activity</h3><p class="module-sum">What the site did, and who used it.</p></div>
+          <ul class="ticks">
+            <li>Email outbox: waiting, sent and failed, with each email readable</li>
+            <li>Visitor statistics: top pages, devices, where visitors came from and engagement, for today, 7, 30 or 90 days or 12 months</li>
+            <li>Activity: sign-ins and admin actions</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Settings and data</h3><p class="module-sum">Changed live, no redeploy.</p></div>
+          <ul class="ticks">
+            <li>Business hours, closed weekdays and holidays, and how far ahead people can book; changes apply to the next lookup</li>
+            <li>Data and retention: how long each log is kept, table sizes, and a history of cleanups</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="engineering">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>Under the hood</h2>
+      <p class="mp-intro">The parts a visitor never sees but the clinic depends on.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Email that gets there</h3><p class="module-sum">An outbox, not a fire-and-forget send.</p></div>
+          <ul class="ticks">
+            <li>Every email is queued first; a worker retries failures at 1, 2, 5, 15 and 30 minutes, then up to 24 hours</li>
+            <li>A row being sent is leased, so a restart mid-send never sends it twice, and stale emails expire</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Housekeeping</h3><p class="module-sum">Running unattended.</p></div>
+          <ul class="ticks">
+            <li>A nightly retention job at 03:30 Malaysia time, which catches up after a restart</li>
+            <li>Error alerts emailed when errors pile up or a background job fails, with a cooldown so nobody gets flooded</li>
+            <li>Health checks and a cleaner for abandoned uploads</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Security</h3><p class="module-sum">Defaults that hold up.</p></div>
+          <ul class="ticks">
+            <li>Content-Security-Policy and security headers, switchable between enforce, report-only and off without a restart, with a report endpoint</li>
+            <li>Cloudflare Turnstile and a sliding-window rate limiter on public forms</li>
+            <li>BCrypt passwords and sign-in lockouts</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Behind Cloudflare</h3><p class="module-sum">Knowing who the visitor really is.</p></div>
+          <ul class="ticks">
+            <li>A Cloudflare Worker forwards the real visitor IP and country with a shared secret, and the app only trusts those headers when the secret matches</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad-top-0">
+  <div class="wrap">
+    <nav class="next-up" aria-label="More projects">
+      <a class="next-link" data-cursor="Next" href="star8892.html">
+        <span><span class="next-label">Next project</span><span class="next-name">star8892</span></span>
+        <svg class="project-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <div class="next-sub">
+        <a href="iseliaintel.html">&larr; iSeliaIntel</a>
+        <a href="../work.html">All work</a>
+      </div>
+    </nav>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-word" aria-hidden="true"><span>D</span><span>o</span><span>l</span><span class="dot">.</span></div>
+    <div class="foot-bottom">
+      <span>Dol — Full-Stack Developer · Blazor &amp; .NET</span>
+      <span class="foot-made"><svg viewBox="0 0 16 20" aria-hidden="true"><path class="s" d="M6 5C4.5 3 7 2 5.5 0"/><path class="s" d="M10 5C8.5 3 11 2 9.5 0"/><path class="t" d="M3.3 11 4.4 19H11.6L12.7 11Z"/><path class="g" d="M2 7 3.6 19.2H12.4L14 7Z"/></svg>Made in Malaysia, fuelled by teh tarik</span>
+      <a href="mailto:abdullahharun96@gmail.com">abdullahharun96@gmail.com</a>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/motion.js" defer></script>
+</body>
+</html>

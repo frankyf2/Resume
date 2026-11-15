@@ -7,9 +7,9 @@
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0D1431">
 <title>star8892 — Dol</title>
-<meta name="description" content="A Facebook-style social network for an alumni community, with its own marketplace and events.">
+<meta name="description" content="star8892 is a private social network I built for the 1988–1992 batch of STAR Ipoh: wall, chat, events, marketplace, games and a full admin back office.">
 <meta property="og:title" content="star8892 — Dol">
-<meta property="og:description" content="A Facebook-style social network for an alumni community, with its own marketplace and events.">
+<meta property="og:description" content="star8892 is a private social network I built for the 1988–1992 batch of STAR Ipoh: wall, chat, events, marketplace, games and a full admin back office.">
 <meta property="og:image" content="../img/profile.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -42,21 +42,172 @@
 <section class="page-head" data-enter>
   <div class="wrap">
     <h1 class="page-title" data-split>star8892</h1>
-    <dl class="facts">
-      <div class="fact"><dt>Context</dt><dd>Personal project</dd></div>
-      <div class="fact"><dt>Stack</dt><dd>Blazor Server · MySQL</dd></div>
+    <dl class="facts facts-4">
+      <div class="fact"><dt>Community</dt><dd>STAR Ipoh alumni, the 1988&ndash;1992 batch</dd></div>
+      <div class="fact"><dt>My role</dt><dd>Assigned by my manager; I designed and built all of it, and maintain it</dd></div>
+      <div class="fact"><dt>Status</dt><dd>In development</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>Blazor (.NET 9) · MudBlazor 9 · EF Core · MariaDB · MailKit</dd></div>
     </dl>
+    <p class="case-lead mp-lead">star8892 is a private social network for the 1988&ndash;1992 batch of STAR (Sekolah Tuanku Abdul Rahman) in Ipoh, built around their reunion and for keeping the batch in touch after it. Members get a wall, live chat, events with RSVPs, a marketplace, a directory and games. Admins get a full back office to approve members, moderate and run the site.</p>
+    <div class="figures">
+      <div class="figure"><span class="figure-num">63</span><span class="figure-label">routes</span></div>
+      <div class="figure"><span class="figure-num">17</span><span class="figure-label">admin routes</span></div>
+      <div class="figure"><span class="figure-num">28</span><span class="figure-label">data tables</span></div>
+    </div>
+    <nav class="jump" aria-label="On this page">
+      <a href="#public">The public side</a>
+      <a href="#members">What members get</a>
+      <a href="#admin">The admin back office</a>
+      <a href="#engineering">Under the hood</a>
+    </nav>
   </div>
 </section>
 
-<section class="pad-top-20">
-  <div class="wrap case">
-    <p class="case-lead">A Facebook-style social network built for an alumni community, with its own themed design system (Alumni88). Beyond the feed, it includes a marketplace with listings and orders, an events calendar with creation and RSVPs, and a member directory.</p>
-    <ul class="features">
-        <li>Feed, profiles, and notifications</li>
-        <li>Marketplace — listings and order management</li>
-        <li>Events — calendar, creation, RSVPs</li>
-    </ul>
+<section class="mp-section" id="public">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>The public side</h2>
+      <p class="mp-intro">What someone sees before they're approved.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Batch pages</h3><p class="module-sum">The reunion, out in the open.</p></div>
+          <ul class="ticks">
+            <li>Home, About, Reunion, Batch Events, Stories, Get Involved, FAQ, Help, Contact and Report a Problem</li>
+            <li>Batch events marked up as schema.org events so search engines can list them; private meeting links are deliberately left out</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Joining</h3><p class="module-sum">Only the batch gets in.</p></div>
+          <ul class="ticks">
+            <li>Register, verify the email with a code, then wait for an admin to approve</li>
+            <li>Forgot-password and a forced change for temporary passwords</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="members">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>What members get</h2>
+      <p class="mp-intro">A small Facebook for one school batch.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Wall</h3><p class="module-sum">Posts, comments and reactions.</p></div>
+          <ul class="ticks">
+            <li>Main wall and an announcements wall, pinned posts first</li>
+            <li>Event walls that only that event's attendees can see</li>
+            <li>Fast paging that fetches only what the page shows, with a short preview of the latest comments</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Chat</h3><p class="module-sum">Live, with no refreshing.</p></div>
+          <ul class="ticks">
+            <li>Direct messages, group chats and a chat for each event</li>
+            <li>Messages appear straight away on every open page, including the unread badge in the nav bar</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Events</h3><p class="module-sum">Plan it, RSVP to it.</p></div>
+          <ul class="ticks">
+            <li>Calendar, create an event, my events, and RSVPs</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Marketplace</h3><p class="module-sum">Buying and selling within the batch.</p></div>
+          <ul class="ticks">
+            <li>Create listings, save them, place orders and track orders received</li>
+            <li>Reminders for quiet listings, expiry after about 60 days, bumping, and a sold ribbon</li>
+            <li>Renamed listings and events keep their old links working</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Games</h3><p class="module-sum">Leaderboards for the reunion.</p></div>
+          <ul class="ticks">
+            <li>A catalogue of board, card, sport, digital and trivia games, for individuals or teams</li>
+            <li>Each game sets its own scoring rule: highest points, lowest points (like golf), or wins only</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>People</h3><p class="module-sum">Finding each other.</p></div>
+          <ul class="ticks">
+            <li>Member directory and profiles, notifications, site-wide search that follows the same privacy rules as the pages, and account settings</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="admin">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>The admin back office</h2>
+      <p class="mp-intro">Two levels, Admin and Super admin, and every action written to an audit log.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Members</h3><p class="module-sum">Who's in.</p></div>
+          <ul class="ticks">
+            <li>Pending approvals, member management, admins and a super admin console</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Content</h3><p class="module-sum">What the batch sees.</p></div>
+          <ul class="ticks">
+            <li>Announcements, events and their RSVP lists, marketplace and games</li>
+            <li>Feed moderation: hide, restore or remove any post or comment</li>
+            <li>Site pages: edit the public copy, with the old text kept in the audit log so a bad edit can be restored</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Data</h3><p class="module-sum">Keeping a copy.</p></div>
+          <ul class="ticks">
+            <li>CSV exports and database backups, keeping only the newest few</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Settings and audit</h3><p class="module-sum">Running the site.</p></div>
+          <ul class="ticks">
+            <li>Site settings, maintenance mode and the full audit log</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="engineering">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>Under the hood</h2>
+      <p class="mp-intro">Mostly security, because it holds personal details of real people.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Sign-in</h3><p class="module-sum">Hard to abuse.</p></div>
+          <ul class="ticks">
+            <li>BCrypt passwords and lockouts that can't get stuck on forever</li>
+            <li>Throttles on sign-up, code checks and password resets, counted per IP and per target, so nobody can hammer one account or bomb one inbox</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Sessions that stay honest</h3><p class="module-sum">A Blazor-specific problem.</p></div>
+          <ul class="ticks">
+            <li>Open pages re-check the session every few minutes, so a suspended, demoted or signed-out member loses access without reloading</li>
+            <li>Step-up: admins re-enter their password before destructive actions, remembered per session, not per user</li>
+            <li>Maintenance mode also stops pages that were already open</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Accountability</h3><p class="module-sum">Who did what.</p></div>
+          <ul class="ticks">
+            <li>An insert-only audit log; once a day, old rows are archived to a compressed monthly CSV before leaving the database</li>
+            <li>Optional alert emails to super admins when an admin is added or removed, or data is exported</li>
+          </ul>
+        </div>
+    </div>
   </div>
 </section>
 
@@ -68,7 +219,7 @@
         <svg class="project-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <div class="next-sub">
-        <a href="isusun.html">&larr; iSusun</a>
+        <a href="careventis.html">&larr; CareVentis</a>
         <a href="../work.html">All work</a>
       </div>
     </nav>

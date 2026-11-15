@@ -7,9 +7,9 @@
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0D1431">
 <title>Autumn Twilight — Dol</title>
-<meta name="description" content="A companion web portal for a persistent text-based Dragonlance roleplaying world.">
+<meta name="description" content="Autumn Twilight is a web portal for a text-based Dragonlance roleplaying world, inspired by the classic Autumn Twilight game. In development.">
 <meta property="og:title" content="Autumn Twilight — Dol">
-<meta property="og:description" content="A companion web portal for a persistent text-based Dragonlance roleplaying world.">
+<meta property="og:description" content="Autumn Twilight is a web portal for a text-based Dragonlance roleplaying world, inspired by the classic Autumn Twilight game. In development.">
 <meta property="og:image" content="../img/profile.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -42,29 +42,109 @@
 <section class="page-head" data-enter>
   <div class="wrap">
     <h1 class="page-title" data-split>Autumn Twilight</h1>
-    <dl class="facts">
-      <div class="fact"><dt>Context</dt><dd>Ongoing · passion project</dd></div>
-      <div class="fact"><dt>Stack</dt><dd>Blazor Server</dd></div>
+    <dl class="facts facts-4">
+      <div class="fact"><dt>Inspired by</dt><dd>The classic Autumn Twilight text-based Dragonlance game</dd></div>
+      <div class="fact"><dt>My role</dt><dd>Design and build</dd></div>
+      <div class="fact"><dt>Status</dt><dd>In development</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>Blazor (.NET 9) · MudBlazor 9 · EF Core · MariaDB · MailKit</dd></div>
     </dl>
+    <p class="case-lead mp-lead">A web home for a persistent text-based roleplaying world set in Dragonlance's Ansalon, inspired by the old Autumn Twilight game. The public side introduces the world and its factions; signed-in players get their own area for character, inventory and quests. It's still being built, so the player screens are designed and working against sample data while the link to the game itself is built.</p>
+    <div class="figures">
+      <div class="figure"><span class="figure-num">6</span><span class="figure-label">factions</span></div>
+      <div class="figure"><span class="figure-num">17</span><span class="figure-label">routes</span></div>
+      <div class="figure"><span class="figure-num">2</span><span class="figure-label">sides: world and player</span></div>
+    </div>
+    <nav class="jump" aria-label="On this page">
+      <a href="#world">The world</a>
+      <a href="#player">The player area</a>
+      <a href="#accounts">Accounts and admin</a>
+    </nav>
   </div>
 </section>
 
-<section class="pad-top-20">
-  <div class="wrap case">
-    <p class="case-lead">A companion web portal for a persistent text-based roleplaying world set in the Dragonlance universe. Built from the ground up: account system, character dashboard, inventory, quests, leaderboards, and lore pages — currently in active design and build.</p>
-    <ul class="features">
-        <li>Account &amp; character system</li>
-        <li>Quests, inventory, leaderboards</li>
-        <li>Lore, devlog, and maps pages</li>
-    </ul>
+<section class="mp-section" id="world">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>The world</h2>
+      <p class="mp-intro">Pages anyone can read.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Home</h3><p class="module-sum">Enter Lhambor-Kanan.</p></div>
+          <ul class="ticks">
+            <li>World figures: souls in Ansalon, areas charted and playable races</li>
+            <li>The six factions: Knights of Solamnia, Dragonarmy of Takhisis, Conclave of Wizards, Holy Order of the Stars, Wildrunners and The Brotherhood</li>
+            <li>Classes shown as capability sets rather than fixed roles: Fighter, Sorcerer, Berserker and the schools of magic</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Reference</h3><p class="module-sum">For players old and new.</p></div>
+          <ul class="ticks">
+            <li>Lore, Maps, Leaderboards, a Devlog and Help pages</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="player">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>The player area</h2>
+      <p class="mp-intro">The &ldquo;Warden&rdquo; screens a signed-in player sees.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Character</h3><p class="module-sum">Who you are.</p></div>
+          <ul class="ticks">
+            <li>Dashboard and character sheet with stat bars</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Inventory and quests</h3><p class="module-sum">What you carry and what you're doing.</p></div>
+          <ul class="ticks">
+            <li>Inventory, and quests shown as cards</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="accounts">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>Accounts and admin</h2>
+      <p class="mp-intro">Invite-only while it's being built.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Getting in</h3><p class="module-sum">Request, then approval.</p></div>
+          <ul class="ticks">
+            <li>Request access; an admin approves or turns it down</li>
+            <li>Sign in, change password; BCrypt passwords and tracked sessions</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Admin</h3><p class="module-sum">Running the gate.</p></div>
+          <ul class="ticks">
+            <li>Access requests and account management, with roles</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Look and feel</h3><p class="module-sum">Its own atmosphere.</p></div>
+          <ul class="ticks">
+            <li>A custom dark MudBlazor theme, separate from my client sites, and SEO endpoints for the public pages</li>
+          </ul>
+        </div>
+    </div>
   </div>
 </section>
 
 <section class="pad-top-0">
   <div class="wrap">
     <nav class="next-up" aria-label="More projects">
-      <a class="next-link" data-cursor="Next" href="mirar.html">
-        <span><span class="next-label">Next project</span><span class="next-name">MIRAR Platform</span></span>
+      <a class="next-link" data-cursor="Next" href="isusun.html">
+        <span><span class="next-label">Next project</span><span class="next-name">iSusun</span></span>
         <svg class="project-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <div class="next-sub">

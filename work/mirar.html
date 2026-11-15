@@ -7,9 +7,9 @@
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0D1431">
 <title>MIRAR Platform — Dol</title>
-<meta name="description" content="Designed, built and maintain the MIRAR website: redesigned the public site and built the entire admin system for courses, certificates, quizzes, surveys, articles, members and analytics.">
+<meta name="description" content="MIRAR: I moved the old PHP site to Blazor and built the entire admin system: courses, certificates, attendance, quizzes, surveys, articles, an expert directory, members and analytics.">
 <meta property="og:title" content="MIRAR Platform — Dol">
-<meta property="og:description" content="Designed, built and maintain the MIRAR website: redesigned the public site and built the entire admin system for courses, certificates, quizzes, surveys, articles, members and analytics.">
+<meta property="og:description" content="MIRAR: I moved the old PHP site to Blazor and built the entire admin system: courses, certificates, attendance, quizzes, surveys, articles, an expert directory, members and analytics.">
 <meta property="og:image" content="../img/profile.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -43,20 +43,21 @@
   <div class="wrap">
     <h1 class="page-title" data-split>MIRAR Platform</h1>
     <dl class="facts facts-4">
-      <div class="fact"><dt>Company</dt><dd>MIRAR, a separate company from PNMS under the same management</dd></div>
-      <div class="fact"><dt>My role</dt><dd>Design, build and maintenance: the redesigned public website and the entire admin system</dd></div>
+      <div class="fact"><dt>Company</dt><dd>MIRAR, a separate company from PNMS under the same management. The old site was PHP on cPanel</dd></div>
+      <div class="fact"><dt>My role</dt><dd>All of the design and build: the redesigned public website and the entire admin system. The brief and some of the ideas came from my manager; I maintain it</dd></div>
       <div class="fact"><dt>Status</dt><dd>In active development</dd></div>
       <div class="fact"><dt>Stack</dt><dd>Blazor Server · MariaDB/MySQL · EF Core · Cloudflare Workers</dd></div>
     </dl>
-    <p class="case-lead mp-lead">MIRAR (the Malaysian Institute for Risk and Resilience) runs training, advisory and credentialing. I redesigned its public website from the previous version, then built the whole admin system behind it: the tools staff use to run courses and sessions, issue certificates, deliver quizzes and surveys, publish articles and see how the site is used. I design, build and maintain all of it.</p>
+    <p class="case-lead mp-lead">MIRAR (the Malaysian Institute for Risk and Resilience) runs training, advisory and credentialing. I redesigned its public website, moving it from the old PHP site on cPanel to Blazor, then built the whole admin system behind it: the tools staff use to run courses and sessions, issue certificates, take attendance, deliver quizzes and surveys, publish articles, run a professional directory and see how the site is used. I design, build and maintain all of it.</p>
     <div class="figures">
-      <div class="figure"><span class="figure-num">30</span><span class="figure-label">admin routes</span></div>
-      <div class="figure"><span class="figure-num">36</span><span class="figure-label">data models</span></div>
-      <div class="figure"><span class="figure-num">7</span><span class="figure-label">email templates</span></div>
+      <div class="figure"><span class="figure-num">43</span><span class="figure-label">admin routes</span></div>
+      <div class="figure"><span class="figure-num">38</span><span class="figure-label">data models</span></div>
+      <div class="figure"><span class="figure-num">9</span><span class="figure-label">email templates</span></div>
     </div>
     <nav class="jump" aria-label="On this page">
       <a href="#public">The public website</a>
       <a href="#admin">The admin system</a>
+      <a href="#experts">The Expert Network</a>
       <a href="#participants">What participants and members see</a>
       <a href="#engineering">Under the hood</a>
     </nav>
@@ -97,6 +98,19 @@
           </ul>
         </div>
         <div class="module">
+          <div class="module-head"><h3>Expert directory</h3><p class="module-sum">A public Professional Directory.</p></div>
+          <ul class="ticks">
+            <li>Browse verified professionals by expertise area, with a profile page for each</li>
+            <li>Join, standards and terms pages, and an enquiry form on every profile</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Free QR code generator</h3><p class="module-sum">A public tool on the site.</p></div>
+          <ul class="ticks">
+            <li>Turn any link or text into a QR code, with a transparent-background option</li>
+          </ul>
+        </div>
+        <div class="module">
           <div class="module-head"><h3>Forms and enquiries</h3><p class="module-sum">Everything a visitor can send.</p></div>
           <ul class="ticks">
             <li>Contact and course-interest forms save to the database and email the team</li>
@@ -125,7 +139,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2 data-split>The admin system</h2>
-      <p class="mp-intro">I built all of it: 30 routes, each behind its own sign-in guard. The sidebar shows live counts of what needs attention, and most list pages export to Excel, CSV or PDF.</p>
+      <p class="mp-intro">I built all of it: 43 routes, each behind its own sign-in guard. The sidebar shows live counts of what needs attention, and most list pages export to Excel, CSV or PDF.</p>
     </div>
     <div class="modules">
         <div class="module">
@@ -156,6 +170,14 @@
             <li>Email one recipient or a whole group, resend, or send automatically on issue; recipients without an account become members and get an activation link</li>
             <li>Preview and print. The PDF is rendered in the browser from the same markup as the preview, so what is emailed matches what is on screen</li>
             <li>Download a batch as one ZIP with a PDF per person; a server-side renderer is kept as a fallback</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Attendance</h3><p class="module-sum">Scan a QR code, find your name, check in.</p></div>
+          <ul class="ticks">
+            <li>Attendance sessions per training day: create, open, close, duplicate and delete</li>
+            <li>Build the roster by adding names, pasting a list, or importing from course registrations</li>
+            <li>A link code and QR for each session, an optional note for participants, and walk-ins on or off</li>
           </ul>
         </div>
         <div class="module">
@@ -240,6 +262,13 @@
           </ul>
         </div>
         <div class="module">
+          <div class="module-head"><h3>Email outbox</h3><p class="module-sum">Every email the site sends.</p></div>
+          <ul class="ticks">
+            <li>Waiting, sent and failed views with search and a preview of each email</li>
+            <li>Emails carrying one-time links (password resets, activations) are flagged so their content isn't exposed</li>
+          </ul>
+        </div>
+        <div class="module">
           <div class="module-head"><h3>Homepage ticker</h3><p class="module-sum">The scrolling line on the home page.</p></div>
           <ul class="ticks">
             <li>Add, reorder, disable and remove items, then save or discard</li>
@@ -269,6 +298,57 @@
             <li>An unsaved-changes guard on every builder, for in-app navigation and for closing the tab</li>
             <li>Sidebar with live badges, and a drawer on mobile</li>
             <li>Search, filters and pagination on lists; snackbar feedback on every action</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mp-section" id="experts">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-split>The Expert Network</h2>
+      <p class="mp-intro">A Professional Directory where risk and compliance professionals apply, get their credentials checked by MIRAR reviewers, and are listed publicly. My manager assigned it; I designed and built the whole workflow, built to be careful with personal data.</p>
+    </div>
+    <div class="modules">
+        <div class="module">
+          <div class="module-head"><h3>Profiles and revisions</h3><p class="module-sum">Edits never go live unreviewed.</p></div>
+          <ul class="ticks">
+            <li>Professionals edit a draft; the public page only ever shows the approved version</li>
+            <li>Editing an approved profile starts a new draft, and the old one stays live until the new one is approved</li>
+            <li>Every status change goes through one place that checks the transition, saves the audit row in the same transaction, then queues the email</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Credential verification</h3><p class="module-sum">Three levels, with evidence.</p></div>
+          <ul class="ticks">
+            <li>Up to 10 credentials per professional, with supporting documents; an approved credential can't be edited, only withdrawn and replaced</li>
+            <li>Level 2 needs a document; Level 3 needs the issuer's method and a reference, and a second, different reviewer to confirm it</li>
+            <li>Every decision is a new record, never an update</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Enquiries</h3><p class="module-sum">MIRAR sits in the middle.</p></div>
+          <ul class="ticks">
+            <li>Public enquiries come to MIRAR first, and a reviewer forwards them to the professional, with Reply-To set to the person asking</li>
+            <li>Consent required, honeypot and rate limits, one enquiry per person per professional a day, and flagged words held for staff</li>
+            <li>Personal details blanked after 12 months; counts and dates kept</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Consent and privacy</h3><p class="module-sum">Built around PDPA rights.</p></div>
+          <ul class="ticks">
+            <li>Each consent stored with the version and a SHA-256 hash of the exact wording agreed to</li>
+            <li>Export everything held about a member as one JSON file, or erase it, leaving only an empty tombstone so links don't break</li>
+            <li>Retention jobs: evidence purged on schedule, credential expiry reminders, and unsubmitted drafts warned at 60 days and removed at 90</li>
+          </ul>
+        </div>
+        <div class="module">
+          <div class="module-head"><h3>Admin screens</h3><p class="module-sum">For reviewers and admins.</p></div>
+          <ul class="ticks">
+            <li>Review queue and full profile view, credentials, enquiries, reviewers, operations, and an insert-only audit trail</li>
+            <li>Taxonomy editor for the six directory lists: add, reorder, merge, disable, and map expertise areas to course categories</li>
+            <li>Invite-only soft launch: until registration opens, only invited emails can create a profile</li>
           </ul>
         </div>
     </div>
@@ -314,6 +394,7 @@
             <li>Dashboard with recent certificates, and a profile page</li>
             <li>Certificate preview and PDF download</li>
             <li>A course resources page with videos and materials</li>
+            <li>A Directory Profile area for professionals: profile, credentials and forwarded enquiries</li>
           </ul>
         </div>
     </div>
@@ -354,9 +435,10 @@
         <div class="module">
           <div class="module-head"><h3>Data and email</h3><p class="module-sum">The plumbing.</p></div>
           <ul class="ticks">
-            <li>EF Core on MariaDB/MySQL through a DbContext factory, across 36 data models</li>
+            <li>EF Core on MariaDB/MySQL through a DbContext factory, across 38 data models</li>
             <li>One shared export helper for Excel, CSV and PDF</li>
-            <li>Seven HTML email templates: certificate invite and ready, member activation, registration, message, survey and article submission notifications</li>
+            <li>Nine HTML email templates: certificate invite and ready, member activation, password reset, registration, message, survey, article submission and expert directory notices</li>
+            <li>Every email goes through an outbox: a background worker claims each one with a lease, so a crash or app-pool recycle never sends twice or loses one</li>
           </ul>
         </div>
     </div>
@@ -371,7 +453,7 @@
         <svg class="project-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <div class="next-sub">
-        <a href="autumn-twilight.html">&larr; Autumn Twilight</a>
+        <a href="isusun.html">&larr; iSusun</a>
         <a href="../work.html">All work</a>
       </div>
     </nav>
